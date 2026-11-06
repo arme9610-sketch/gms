@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>ARME — Travel Collection</title>
+<style>
+:root{font-family:Arial,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;color:#1b1b19;background:#fff;scroll-behavior:smooth}
+*{box-sizing:border-box}body{margin:0}a{color:inherit;text-decoration:none}a:focus-visible{outline:2px solid #4561ad;outline-offset:5px}
+.wrap{width:min(1192px,calc(100% - 56px));margin:auto}.nav{border-bottom:1px solid #ecece9}.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:62px;gap:18px}.logo{font-weight:900;letter-spacing:.15em;font-size:22px}.links{display:flex;gap:24px;font-size:13px}.label{font-size:11px;font-weight:700;letter-spacing:.18em}.intro{padding:57px 0 25px;display:flex;justify-content:space-between;align-items:end;gap:20px}.intro h1{font-size:clamp(47px,8vw,104px);line-height:.92;letter-spacing:-.08em;margin:0}.intro p{font-size:15px;color:#555650;margin:0 0 3px;text-align:right}
+.hero{display:grid;grid-template-columns:1fr 1.03fr;background:#edede8;border-radius:24px;overflow:hidden;min-height:470px}.hero-copy{padding:clamp(27px,5vw,72px);align-self:center}.hero h2{font-size:clamp(43px,6.6vw,96px);letter-spacing:-.075em;line-height:.87;margin:20px 0}.hero p{font-size:18px;line-height:1.55;margin:0 0 24px}.hero img{width:100%;height:100%;object-fit:cover;display:block;aspect-ratio:1.15}.actions{display:flex;align-items:center;flex-wrap:wrap;gap:15px;font-size:13px}.pill{display:inline-flex;align-items:center;min-height:44px;padding:0 17px;background:#20211f;color:#fff;border-radius:30px}.quiet:hover{text-decoration:underline}
+.lineup{padding:90px 0 75px}.section-head{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:27px}.section-head h2{font-size:clamp(32px,5vw,60px);margin:8px 0 0;letter-spacing:-.07em}.section-head a{font-size:13px;flex-shrink:0}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{border:1px solid #eaeae6;border-radius:18px;overflow:hidden}.card img{width:100%;aspect-ratio:1.14;object-fit:cover;display:block;background:#eeeee9}.card-copy{padding:24px}.card h3{font-size:clamp(23px,2.7vw,37px);letter-spacing:-.06em;margin:0 0 10px}.card p{font-size:14px;line-height:1.55;margin:0 0 18px;color:#555650}
+.end{background:#1d1e1c;color:#fff;padding:49px 0}.end .wrap{display:flex;justify-content:space-between;align-items:center;gap:18px}.end p{margin:0;font-size:12px;color:#d7d7d1}.end a{font-size:13px}
+@media(max-width:720px){.wrap{width:calc(100% - 32px)}.nav .wrap{height:55px}.links{gap:14px}.intro{padding-top:35px;display:block}.intro p{text-align:left;margin:12px 0 0}.hero{grid-template-columns:1fr;min-height:0;border-radius:18px}.hero-copy{padding:28px 22px 22px}.hero h2{margin:12px 0}.hero p{font-size:15px;margin-bottom:15px}.hero img{aspect-ratio:1.34;height:auto}.lineup{padding:55px 0 43px}.grid{grid-template-columns:1fr}.card img{aspect-ratio:1.4}.end .wrap{flex-wrap:wrap}}
+@media(prefers-reduced-motion:reduce){:root{scroll-behavior:auto}}
+.details{padding:0 0 76px}.details figure{margin:0;border-radius:18px;overflow:hidden;background:#f3f4f6}.details img{width:100%;aspect-ratio:1;object-fit:cover;display:block}.details figcaption{padding:18px 20px;font-size:15px;font-weight:700}.hero img{object-position:center 57%}
+
+.pill,.photo-button,.close-preview,.tab{font:inherit;cursor:pointer;border:0}.pill{font-size:13px;transition:background .2s,transform .2s}.pill:hover{background:#414340}.pill:active{transform:scale(.97)}button:focus-visible{outline:2px solid #4561ad;outline-offset:3px}.photo-button{padding:0;width:100%;overflow:hidden;display:block;background:#eeeee9}.card img{transition:transform .45s cubic-bezier(.2,.65,.25,1)}@media(hover:hover){.card:hover img,.card:focus-within img{transform:scale(1.045)}}
+dialog{width:min(920px,calc(100% - 24px));max-height:calc(100dvh - 32px);padding:0;border:0;border-radius:23px;color:inherit;background:#fff;overscroll-behavior:contain}dialog::backdrop{background:#17191c88;backdrop-filter:blur(8px)}dialog[open]{animation:appear .28s ease-out}body:has(dialog[open]){overflow:hidden}@keyframes appear{from{opacity:0;transform:translateY(12px) scale(.985)}to{opacity:1;transform:none}}.modal-top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:15px clamp(18px,4vw,42px);position:sticky;top:0;background:#fffffff5;z-index:1;border-bottom:1px solid #ececea}.close-preview{border-radius:50%;width:42px;height:42px;font-size:24px;background:#eee;color:#222}.modal-body{padding:clamp(19px,4vw,42px);display:grid;grid-template-columns:1.15fr 1fr;gap:26px}.modal-body img{width:100%;aspect-ratio:1.07;object-fit:cover;border-radius:15px}.modal-body h2{font-size:clamp(32px,5vw,52px);letter-spacing:-.07em;margin:10px 0}.modal-body p{line-height:1.6}.tab-row{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 14px}.tab{border-radius:22px;background:#f1f1f1;padding:10px 14px}.tab[aria-pressed=true]{background:#20211f;color:white}.payment-options{display:grid;gap:7px}.payment-options label{display:flex;gap:8px;align-items:center;padding:12px;border:1px solid #dedede;border-radius:10px}.payment-options label:has(input:checked){border-color:#20211f;background:#f5f5f5}.sample{font-size:12px;color:#565656}@media(max-width:650px){.modal-body{grid-template-columns:1fr}.modal-body img{aspect-ratio:1.4}}@media(prefers-reduced-motion:reduce){*,dialog[open]{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<header class="nav"><div class="wrap"><a class="logo" href="#" aria-label="ARME 홈">ARME</a><nav class="links" aria-label="주 메뉴"><a href="#lineup">캐리어</a></nav></div></header>
+<main class="wrap">
+<div class="intro"><h1>Travel.</h1><p>여행의 시작을 함께할 캐리어.</p></div>
+<section class="hero" aria-labelledby="feature">
+<div class="hero-copy"><span class="label">ARME TRAVEL COLLECTION</span><h2 id="feature">METRON<br>CABIN</h2><p>위로 열리는 새로운 여행의 형태.</p><div class="actions"><button type="button" class="pill" data-model="cabin">자세히 보기</button><a class="quiet" href="#details">디테일 보기 ↓</a></div></div>
+<img src="assets/cabin-front.webp" alt="ARME 메트론 카빈 공식 상품 사진" fetchpriority="high">
+</section>
+<section class="lineup" id="lineup" aria-labelledby="models"><div class="section-head"><div><span class="label">THE LINEUP</span><h2 id="models">캐리어 살펴보기.</h2></div></div>
+<div class="grid">
+<article class="card"><button class="photo-button" type="button" data-model="metron" aria-label="메트론 상세 보기"><img src="https://arme-korea.shop/web/product/small/202607/5e1e627b14c76357d86397f197455f8b.jpg" alt="메트론 캐리어" loading="lazy"></button><div class="card-copy"><h3>METRON</h3><p>메트론 캐리어</p><button class="pill" type="button" data-model="metron">자세히 보기</button></div></article>
+<article class="card"><button class="photo-button" type="button" data-model="cabin" aria-label="메트론 카빈 상세 보기"><img src="assets/cabin-front.webp" alt="메트론 카빈 캐리어" loading="lazy"></button><div class="card-copy"><h3>METRON CABIN</h3><p>위로 열리는 가로형 캐리어</p><button class="pill" type="button" data-model="cabin">자세히 보기</button></div></article>
+<article class="card"><button class="photo-button" type="button" data-model="essential" aria-label="에센셜 상세 보기"><img src="https://arme-korea.shop/web/product/small/202409/d49b7dd18c90ae25cdda93c26ef37b93.jpg" alt="에센셜 20인치 크림 화이트 캐리어" loading="lazy"></button><div class="card-copy"><h3>ESSENTIAL</h3><p>20 · 24 · 28인치 라인업</p><button class="pill" type="button" data-model="essential">자세히 보기</button></div></article>
+</div></section>
+<section class="details" id="details" aria-labelledby="detail-title">
+<div class="section-head"><div><span class="label">METRON CABIN</span><h2 id="detail-title">가까이에서 살펴보기.</h2></div></div>
+<div class="grid">
+<figure><img src="assets/cabin-open.webp" alt="위로 열리는 메트론 카빈과 레드 수납 공간" loading="lazy"><figcaption>위로 열리는 구조</figcaption></figure>
+<figure><img src="assets/cabin-lock.webp" alt="메트론 카빈 TSA 잠금장치 확대 사진" loading="lazy"><figcaption>TSA 잠금장치</figcaption></figure>
+<figure><img src="assets/cabin-lining.webp" alt="ARME 로고가 새겨진 레드 안감" loading="lazy"><figcaption>레드 안감</figcaption></figure>
+</div></section>
+</main>
+<footer class="end"><div class="wrap"><strong class="logo">ARME</strong><p>메인 화면 디자인 시안</p></div></footer>
+<dialog id="product-preview" aria-labelledby="preview-title">
+<header class="modal-top"><span class="label">ARME / PRODUCT PREVIEW</span><button class="close-preview" type="button" aria-label="상세 보기 닫기" autofocus>×</button></header>
+<div class="modal-body"><img id="preview-image" alt=""><div>
+<span class="label">TRAVEL COLLECTION</span><h2 id="preview-title"></h2>
+<div class="tab-row" role="group" aria-label="상세 정보 보기"><button type="button" class="tab" aria-pressed="true" data-panel="overview">제품 소개</button><button type="button" class="tab" aria-pressed="false" data-panel="payment">결제 방식 예시</button></div>
+<div id="overview"><p id="preview-description"></p></div>
+<div id="payment" hidden><p class="sample">디자인 시안용 예시입니다. 실제 결제는 진행되지 않습니다.</p><div class="payment-options" role="group" aria-label="결제 방식 예시"><label><input type="radio" name="payment" checked>신용·체크카드</label><label><input type="radio" name="payment">간편결제</label><label><input type="radio" name="payment">계좌이체</label></div></div>
+</div></div></dialog>
+<script>
+const preview = document.querySelector('#product-preview');
+const modelDetails = {
+  metron: ['METRON', '아르메 메트론 캐리어.'],
+  cabin: ['METRON CABIN', '가로형 실루엣과 위로 열리는 구조. 실버 외관 안에 레드 수납 공간이 펼쳐집니다.'],
+  essential: ['ESSENTIAL', '20·24·28인치로 구성된 에센셜 라인업.']
+};
+const previewImage = document.querySelector('#preview-image');
+const tabs = [...preview.querySelectorAll('[data-panel]')];
+function showPanel(panel) {
+  for (const button of tabs) {
+    const active = button.dataset.panel === panel;
+    button.setAttribute('aria-pressed', active);
+    document.getElementById(button.dataset.panel).hidden = !active;
+  }
+}
+for (const button of tabs) {
+  button.addEventListener('click', () => showPanel(button.dataset.panel));
+}
+for (const button of document.querySelectorAll('[data-model]')) {
+  button.addEventListener('click', () => {
+    const key = button.dataset.model;
+    const [name, description] = modelDetails[key];
+    const cardImage = document.querySelector('.photo-button[data-model="' + key + '"] img');
+    document.querySelector('#preview-title').textContent = name;
+    document.querySelector('#preview-description').textContent = description;
+    previewImage.src = key === 'cabin' ? 'assets/cabin-open.webp' : cardImage.src;
+    previewImage.alt = name + ' 캐리어 사진';
+    preview.querySelector('input[name=payment]').checked = true;
+    showPanel('overview');
+    preview.showModal();
+    preview.scrollTop = 0;
+  });
+}
+preview.querySelector('.close-preview').addEventListener('click', () => preview.close());
+preview.addEventListener('click', event => { if (event.target === preview) preview.close(); });
+</script>
+</body>
+</html>
