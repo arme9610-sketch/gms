@@ -43,13 +43,32 @@ dialog{width:min(920px,calc(100% - 24px));max-height:calc(100dvh - 32px);padding
 .banner-essential{background:#e7e6e2}
 @media(hover:hover){.product-banner:hover .banner-alternate{opacity:1}.product-banner:hover .banner-open span{background:#222;color:#fff}}
 @media(max-width:720px){.product-banners{margin-bottom:50px}.product-banner{min-height:520px}.banner-copy{padding-top:35px}.banner-cabin .banner-art img{object-position:center 61%}.banner-metron .banner-art,.banner-essential .banner-art{top:145px}}
+
+.nav{position:sticky;top:0;z-index:5;background:#fffffff2;backdrop-filter:blur(16px)}
+.nav .site-menu{display:flex;align-items:center;justify-content:center;gap:clamp(14px,5vw,68px);height:52px;width:calc(100% - 24px);white-space:nowrap}
+.site-menu a{display:inline-flex;align-items:center;min-height:44px;font-size:13px;color:#363635;transition:color .2s}
+.site-menu a:hover{color:#000;text-decoration:underline;text-underline-offset:5px}
+.site-menu .logo{font-size:17px;color:#181818}
+.product-banner[id],.accessories-section{scroll-margin-top:64px}
+.accessories-section{padding:clamp(55px,9vw,110px) 20px;text-align:center;background:#f5f5f7}
+.accessories-section h2{margin:0;font-size:clamp(32px,5vw,56px);letter-spacing:-.05em}
+.accessories-section p{margin:14px 0 0;color:#555}
+@media(max-width:400px){.nav .site-menu{gap:12px}.site-menu a{font-size:12px}.site-menu .logo{font-size:15px}}
 </style>
 </head>
-<body>
-<header class="nav"><div class="wrap"><a class="logo" href="#" aria-label="ARME 홈">ARME</a><nav class="links" aria-label="주 메뉴"><a href="#lineup">캐리어</a></nav></div></header>
+<body id="home">
+<header class="nav">
+  <nav class="site-menu wrap" aria-label="주 메뉴">
+    <a class="logo" href="#home" aria-label="ARME 홈">ARME</a>
+    <a href="#essential">Essential</a>
+    <a href="#cabin">Cabin</a>
+    <a href="#metron">Metron</a>
+    <a href="#accessories">악세서리</a>
+  </nav>
+</header>
 <main>
 <div class="product-banners" id="lineup">
-<section class="product-banner banner-cabin" aria-labelledby="banner-cabin">
+<section id="cabin" class="product-banner banner-cabin" aria-labelledby="banner-cabin">
   <div class="banner-art">
     <img src="assets/cabin-red-blue.webp" alt="바토리 레드와 글레이셔 블루 메트론 카빈" fetchpriority="high">
     <img class="banner-alternate" src="assets/cabin-light-duo.webp" alt="" loading="lazy">
@@ -60,7 +79,7 @@ dialog{width:min(920px,calc(100% - 24px));max-height:calc(100dvh - 32px);padding
     <button class="banner-open" type="button" data-model="cabin" aria-label="METRON CABIN 자세히 보기"><span>자세히 보기</span></button>
   </div>
 </section>
-<section class="product-banner banner-metron" aria-labelledby="banner-metron">
+<section id="metron" class="product-banner banner-metron" aria-labelledby="banner-metron">
   <div class="banner-art">
     <img src="assets/metron-5814.webp" alt="글레이셔 블루 메트론 세로형 캐리어" loading="lazy">
     <img class="banner-alternate" src="assets/metron-5798.webp" alt="" loading="lazy">
@@ -71,7 +90,7 @@ dialog{width:min(920px,calc(100% - 24px));max-height:calc(100dvh - 32px);padding
     <button class="banner-open" type="button" data-model="metron" aria-label="METRON 자세히 보기"><span>자세히 보기</span></button>
   </div>
 </section>
-<section class="product-banner banner-essential" aria-labelledby="banner-essential">
+<section id="essential" class="product-banner banner-essential" aria-labelledby="banner-essential">
   <div class="banner-art">
     <img src="assets/una05142.webp" alt="에센셜 캐리어 두 사이즈" loading="lazy">
     
@@ -92,6 +111,10 @@ dialog{width:min(920px,calc(100% - 24px));max-height:calc(100dvh - 32px);padding
 <figure><img src="assets/cabin-lining.webp" alt="ARME 로고가 새겨진 레드 안감" loading="lazy"><figcaption>레드 안감</figcaption></figure>
 </div></section>
 </div>
+<section id="accessories" class="accessories-section" aria-labelledby="accessories-title">
+  <h2 id="accessories-title">악세서리</h2>
+  <p>제품 소개 준비 중</p>
+</section>
 </main>
 <footer class="end"><div class="wrap"><strong class="logo">ARME</strong><p>메인 화면 디자인 시안</p></div></footer>
 <dialog id="product-preview" aria-labelledby="preview-title">
