@@ -94,6 +94,32 @@ dialog{width:min(920px,calc(100% - 24px));max-height:calc(100dvh - 32px);padding
 
 .banner-metron .cabin-buy,.banner-essential .cabin-buy{border-color:#0071e3;color:#0066cc}
 .banner-metron .cabin-buy:hover,.banner-essential .cabin-buy:hover{background:#0071e3;color:white}
+
+/* CABIN studio composition */
+.banner-cabin{min-height:clamp(520px,54vw,700px);background:#ecebe8}
+.banner-cabin .banner-art{
+  background:
+    linear-gradient(119deg,transparent 16%,#fff9 34%,#fff4 46%,transparent 64%),
+    radial-gradient(ellipse at 50% 56%,#fff 8%,#f1f0ee 49%,#dedcd9 100%);
+}
+.banner-cabin .banner-art::before{
+  content:"";position:absolute;left:50%;bottom:7.5%;width:min(47%,510px);height:20px;
+  transform:translateX(-50%);border-radius:50%;background:#3c252a33;filter:blur(11px)
+}
+.banner-cabin .banner-art .cabin-cutout{
+  bottom:7.5%;width:min(78%,650px);height:calc(100% - 216px);max-width:none;
+  filter:drop-shadow(0 6px 3px #24191c23);animation:cabin-arrival .85s ease-out both
+}
+@keyframes cabin-arrival{
+  from{opacity:0;transform:translate(-50%,9px)}
+  to{opacity:1;transform:translate(-50%,0)}
+}
+@media(max-width:720px){
+  .banner-cabin{min-height:clamp(420px,105vw,540px)}
+  .banner-cabin .banner-art .cabin-cutout{width:min(90%,480px);height:calc(100% - 170px);bottom:9%}
+  .banner-cabin .banner-art::before{bottom:9%;width:66%}
+}
+@media(prefers-reduced-motion:reduce){.banner-cabin .banner-art .cabin-cutout{animation:none}}
 </style>
 </head>
 <body id="home">
@@ -110,7 +136,7 @@ dialog{width:min(920px,calc(100% - 24px));max-height:calc(100dvh - 32px);padding
 <div class="product-banners" id="lineup">
 <section id="cabin" class="product-banner banner-cabin" aria-labelledby="banner-cabin">
   <div class="banner-art">
-    <img class="cabin-cutout" src="assets/cabin-bathory-cutout.webp" alt="바토리 레드 메트론 카빈" fetchpriority="high">
+    <img class="cabin-cutout" src="assets/cabin-bathory-front.webp" alt="바토리 레드 메트론 카빈 정면" fetchpriority="high">
   </div>
   <div class="banner-copy">
     <h1 id="banner-cabin">CABIN</h1>
