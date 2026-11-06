@@ -80,25 +80,18 @@ dialog{width:min(920px,calc(100% - 24px));max-height:calc(100dvh - 32px);padding
 .cabin-buy:hover{background:white;color:#181818}
 
 
-.banner-cabin{background:#111}
-.banner-cabin .banner-art .cabin-film{object-position:center 57%;animation:cabin-camera 5s ease-out both}
-.banner-cabin .banner-art::before{
-  content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
-  background:radial-gradient(ellipse at center,#e7c7a52b,transparent 61%);
-  mix-blend-mode:screen;animation:cabin-light 5s ease-in-out both;
+
+.banner-cabin{min-height:clamp(520px,55vw,690px);background:#f5f5f7;color:#1d1d1f}
+.banner-cabin .banner-art::after{content:none}
+.banner-cabin .banner-art .cabin-cutout{
+  inset:auto auto 24px 50%;width:auto;height:clamp(330px,39vw,470px);max-width:92%;
+  object-fit:contain;object-position:center bottom;transform:translateX(-50%);
+  filter:drop-shadow(0 12px 12px #2222);
 }
-.banner-cabin .banner-art::after{z-index:1;background:linear-gradient(#09090982,transparent 42%,transparent 85%,#0909094d)}
-@keyframes cabin-camera{
-  from{transform:scale(1);filter:brightness(.94)}
-  to{transform:scale(1.045);filter:brightness(1.12)}
-}
-@keyframes cabin-light{
-  0%{transform:translate(-24%,-4%);opacity:.13}
-  68%{transform:translate(2%,7%);opacity:.72}
-  100%{transform:translate(13%,8%);opacity:.24}
-}
-@media(max-width:720px){.banner-cabin .banner-art .cabin-film{object-position:center 60%}}
-@media(prefers-reduced-motion:reduce){.banner-cabin .banner-art .cabin-film,.banner-cabin .banner-art::before{animation:none}}
+.banner-cabin .cabin-buy{border-color:#0071e3;color:#0066cc}
+.banner-cabin .cabin-buy:hover{background:#0071e3;color:#fff}
+@media(max-width:720px){.banner-cabin{min-height:510px}.banner-cabin .banner-art .cabin-cutout{bottom:22px;height:340px}}
+
 .banner-metron .cabin-buy,.banner-essential .cabin-buy{border-color:#0071e3;color:#0066cc}
 .banner-metron .cabin-buy:hover,.banner-essential .cabin-buy:hover{background:#0071e3;color:white}
 </style>
@@ -117,7 +110,7 @@ dialog{width:min(920px,calc(100% - 24px));max-height:calc(100dvh - 32px);padding
 <div class="product-banners" id="lineup">
 <section id="cabin" class="product-banner banner-cabin" aria-labelledby="banner-cabin">
   <div class="banner-art">
-    <img class="cabin-film" src="assets/cabin-film.webp" alt="빛을 받은 바토리 레드 메트론 카빈" fetchpriority="high">
+    <img class="cabin-cutout" src="assets/cabin-bathory-cutout.webp" alt="바토리 레드 메트론 카빈" fetchpriority="high">
   </div>
   <div class="banner-copy">
     <h1 id="banner-cabin">CABIN</h1>
