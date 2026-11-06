@@ -21,22 +21,69 @@ dialog{width:min(920px,calc(100% - 24px));max-height:calc(100dvh - 32px);padding
 .photo-button{position:relative}.photo-button .alternate{position:absolute;inset:0;height:100%;opacity:0;transition:opacity .28s ease,transform .45s cubic-bezier(.2,.65,.25,1)}.photo-button:focus-visible .alternate{opacity:1}@media(hover:hover){.photo-button:hover .alternate{opacity:1}}.gallery{min-width:0}.gallery img{aspect-ratio:4/5;object-fit:contain;background:#f3f3f5;display:block}.gallery-controls{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:12px}.gallery-controls button{width:44px;height:44px;border:0;border-radius:50%;background:#eee;color:#222;cursor:pointer;font-size:20px}.gallery-controls button:hover{background:#ddd}.photo-count{font-size:13px;font-variant-numeric:tabular-nums}.hero img{object-position:center 63%}
 .photo-button[data-model="cabin"] img{object-position:center 68%}
 .color-list{display:flex;flex-wrap:wrap;gap:8px}.color-chip{display:inline-flex;align-items:center;gap:7px;padding:8px 10px;border:1px solid #ddd;border-radius:18px;background:#fff;color:#222;font:inherit;font-size:12px}.color-chip::before{content:"";width:11px;height:11px;border-radius:50%;background:var(--swatch);border:1px solid #0002}.color-chip:is(button){cursor:pointer}.color-chip:is(button):hover,.color-chip[aria-pressed=true]{border-color:#222}
+
+.product-banners{display:grid;gap:12px;margin:0 0 76px}
+.product-banner{position:relative;isolation:isolate;overflow:hidden;text-align:center;min-height:clamp(510px,57vw,720px);background:#f0f0f2}
+.banner-art{position:absolute;z-index:-1;inset:0;overflow:hidden}
+.banner-art img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center bottom;transition:opacity .38s ease,transform .55s ease}
+.banner-art .banner-alternate{opacity:0}
+.banner-copy{position:relative;padding:44px 16px 0}
+.banner-copy h1,.banner-copy h2{font-size:clamp(40px,6vw,80px);line-height:1;letter-spacing:-.06em;margin:0}
+.banner-copy p{font-size:clamp(15px,2vw,23px);margin:10px 0 19px}
+.banner-open{border:0;background:transparent;padding:0;cursor:pointer;color:inherit;font:inherit}
+.banner-open::after{content:"";position:absolute;inset:0;z-index:2}
+.banner-copy{position:static}
+.banner-open span{display:inline-flex;align-items:center;min-height:44px;padding:0 19px;border-radius:30px;background:#fff;color:#181818;font-size:14px;border:1px solid #16161626;transition:background .2s,color .2s}
+.banner-open:focus-visible::after{outline:3px solid #426bd0;outline-offset:-5px}
+.banner-cabin{background:#878482;color:#fff}
+.banner-cabin .banner-art img{left:50%;width:min(100%,1120px);transform:translateX(-50%);object-fit:cover;object-position:center 58%}
+.banner-cabin .banner-art::after{content:"";position:absolute;inset:0;background:linear-gradient(#15151565,transparent 46%)}
+.banner-metron .banner-art,.banner-essential .banner-art{top:167px}
+.banner-metron .banner-art img,.banner-essential .banner-art img{object-fit:contain}
+.banner-essential{background:#e7e6e2}
+@media(hover:hover){.product-banner:hover .banner-alternate{opacity:1}.product-banner:hover .banner-open span{background:#222;color:#fff}}
+@media(max-width:720px){.product-banners{margin-bottom:50px}.product-banner{min-height:520px}.banner-copy{padding-top:35px}.banner-cabin .banner-art img{object-position:center 61%}.banner-metron .banner-art,.banner-essential .banner-art{top:145px}}
 </style>
 </head>
 <body>
 <header class="nav"><div class="wrap"><a class="logo" href="#" aria-label="ARME 홈">ARME</a><nav class="links" aria-label="주 메뉴"><a href="#lineup">캐리어</a></nav></div></header>
-<main class="wrap">
-<div class="intro"><h1>Travel.</h1><p>여행의 시작을 함께할 캐리어.</p></div>
-<section class="hero" aria-labelledby="feature">
-<div class="hero-copy"><span class="label">ARME TRAVEL COLLECTION</span><h2 id="feature">METRON<br>CABIN</h2><p>위로 열리는 새로운 여행의 형태.</p><div class="actions"><button type="button" class="pill" data-model="cabin">자세히 보기</button><a class="quiet" href="#details">디테일 보기 ↓</a></div></div>
-<img src="assets/una05368.webp" alt="계단 앞에 놓인 화이트 메트론 카빈" fetchpriority="high">
+<main>
+<div class="product-banners" id="lineup">
+<section class="product-banner banner-cabin" aria-labelledby="banner-cabin">
+  <div class="banner-art">
+    <img src="assets/cabin-red-blue.webp" alt="바토리 레드와 글레이셔 블루 메트론 카빈" fetchpriority="high">
+    <img class="banner-alternate" src="assets/cabin-light-duo.webp" alt="" loading="lazy">
+  </div>
+  <div class="banner-copy">
+    <h1 id="banner-cabin">METRON CABIN</h1>
+    <p>바토리 레드와 글레이셔 블루.</p>
+    <button class="banner-open" type="button" data-model="cabin" aria-label="METRON CABIN 자세히 보기"><span>자세히 보기</span></button>
+  </div>
 </section>
-<section class="lineup" id="lineup" aria-labelledby="models"><div class="section-head"><div><span class="label">THE LINEUP</span><h2 id="models">캐리어 살펴보기.</h2></div></div>
-<div class="grid">
-<article class="card"><button class="photo-button" type="button" data-model="metron" aria-label="메트론 상세 보기"><img src="assets/metron-5814.webp" alt="메트론 글레이셔 블루 캐리어" loading="lazy"><img class="alternate" src="assets/metron-5798.webp" alt="" loading="lazy"></button><div class="card-copy"><h3>METRON</h3><p>글레이셔 블루 · 바토리 레드</p><button class="pill" type="button" data-model="metron">자세히 보기</button></div></article>
-<article class="card"><button class="photo-button" type="button" data-model="cabin" aria-label="메트론 카빈 상세 보기"><img src="assets/cabin-light-duo.webp" alt="핑크와 화이트 메트론 카빈" loading="lazy"><img class="alternate" src="assets/cabin-dark-duo.webp" alt="" loading="lazy"></button><div class="card-copy"><h3>METRON CABIN</h3><p>위로 열리는 가로형 캐리어</p><button class="pill" type="button" data-model="cabin">자세히 보기</button></div></article>
-<article class="card"><button class="photo-button" type="button" data-model="essential" aria-label="에센셜 상세 보기"><img src="assets/una05142.webp" alt="에센셜 캐리어 두 사이즈" loading="lazy"><img class="alternate" src="assets/una05159.webp" alt="" loading="lazy"></button><div class="card-copy"><h3>ESSENTIAL</h3><p>20 · 24 · 28인치 라인업</p><button class="pill" type="button" data-model="essential">자세히 보기</button></div></article>
-</div></section>
+<section class="product-banner banner-metron" aria-labelledby="banner-metron">
+  <div class="banner-art">
+    <img src="assets/metron-5814.webp" alt="글레이셔 블루 메트론 세로형 캐리어" loading="lazy">
+    <img class="banner-alternate" src="assets/metron-5798.webp" alt="" loading="lazy">
+  </div>
+  <div class="banner-copy">
+    <h2 id="banner-metron">METRON</h2>
+    <p>글레이셔 블루 · 바토리 레드</p>
+    <button class="banner-open" type="button" data-model="metron" aria-label="METRON 자세히 보기"><span>자세히 보기</span></button>
+  </div>
+</section>
+<section class="product-banner banner-essential" aria-labelledby="banner-essential">
+  <div class="banner-art">
+    <img src="assets/una05142.webp" alt="에센셜 캐리어 두 사이즈" loading="lazy">
+    
+  </div>
+  <div class="banner-copy">
+    <h2 id="banner-essential">ESSENTIAL</h2>
+    <p>20 · 24 · 28인치 라인업</p>
+    <button class="banner-open" type="button" data-model="essential" aria-label="ESSENTIAL 자세히 보기"><span>자세히 보기</span></button>
+  </div>
+</section>
+</div>
+<div class="wrap">
 <section class="details" id="details" aria-labelledby="detail-title">
 <div class="section-head"><div><span class="label">METRON CABIN</span><h2 id="detail-title">가까이에서 살펴보기.</h2></div></div>
 <div class="grid">
@@ -44,6 +91,7 @@ dialog{width:min(920px,calc(100% - 24px));max-height:calc(100dvh - 32px);padding
 <figure><img src="assets/cabin-lock.webp" alt="메트론 카빈 TSA 잠금장치 확대 사진" loading="lazy"><figcaption>TSA 잠금장치</figcaption></figure>
 <figure><img src="assets/cabin-lining.webp" alt="ARME 로고가 새겨진 레드 안감" loading="lazy"><figcaption>레드 안감</figcaption></figure>
 </div></section>
+</div>
 </main>
 <footer class="end"><div class="wrap"><strong class="logo">ARME</strong><p>메인 화면 디자인 시안</p></div></footer>
 <dialog id="product-preview" aria-labelledby="preview-title">
@@ -51,7 +99,7 @@ dialog{width:min(920px,calc(100% - 24px));max-height:calc(100dvh - 32px);padding
 <div class="modal-body"><div class="gallery"><img id="preview-image" alt=""><div class="gallery-controls"><button type="button" data-step="-1" aria-label="이전 사진">‹</button><span class="photo-count" aria-live="polite"></span><button type="button" data-step="1" aria-label="다음 사진">›</button></div></div><div>
 <span class="label">TRAVEL COLLECTION</span><h2 id="preview-title"></h2>
 <div class="tab-row" role="group" aria-label="상세 정보 보기"><button type="button" class="tab" aria-pressed="true" data-panel="overview">제품 소개</button><button type="button" class="tab" aria-pressed="false" data-panel="payment">결제 방식 예시</button></div>
-<div id="overview"><p id="preview-description"></p><section id="cabin-colors" hidden aria-label="메트론 카빈 컬러"><h3>컬러</h3><div class="color-list"><button class="color-chip" type="button" data-photo="cabin-silver" style="--swatch:#b6bcc6">Space Silver</button><button class="color-chip" type="button" data-photo="cabin-red" style="--swatch:#c62e3c">Bathory Red</button><span class="color-chip" style="--swatch:#aac7df">Clacier Blue</span><button class="color-chip" type="button" data-photo="cabin-dark-duo" style="--swatch:#575859">Dark Gray</button><button class="color-chip" type="button" data-photo="cabin-black" style="--swatch:#202021">Tripple Black</button><button class="color-chip" type="button" data-photo="una05368" style="--swatch:#f0ede2">Cream White</button><button class="color-chip" type="button" data-photo="una05365" style="--swatch:#e9bfc9">Dawn Pink</button></div><p class="sample">Clacier Blue 사진 준비 중</p></section></div>
+<div id="overview"><p id="preview-description"></p><section id="cabin-colors" hidden aria-label="메트론 카빈 컬러"><h3>컬러</h3><div class="color-list"><button class="color-chip" type="button" data-photo="cabin-silver" style="--swatch:#b6bcc6">Space Silver</button><button class="color-chip" type="button" data-photo="cabin-red" style="--swatch:#c62e3c">Bathory Red</button><button class="color-chip" type="button" data-photo="cabin-red-blue" style="--swatch:#aac7df">Clacier Blue</button><button class="color-chip" type="button" data-photo="cabin-dark-duo" style="--swatch:#575859">Dark Gray</button><button class="color-chip" type="button" data-photo="cabin-black" style="--swatch:#202021">Tripple Black</button><button class="color-chip" type="button" data-photo="una05368" style="--swatch:#f0ede2">Cream White</button><button class="color-chip" type="button" data-photo="una05365" style="--swatch:#e9bfc9">Dawn Pink</button></div></section></div>
 <div id="payment" hidden><p class="sample">디자인 시안용 예시입니다. 실제 결제는 진행되지 않습니다.</p><div class="payment-options" role="group" aria-label="결제 방식 예시"><label><input type="radio" name="payment" checked>신용·체크카드</label><label><input type="radio" name="payment">간편결제</label><label><input type="radio" name="payment">계좌이체</label></div></div>
 </div></div></dialog>
 <script>
@@ -62,7 +110,7 @@ const modelDetails = {
   essential: ['ESSENTIAL', '20·24·28인치로 구성된 에센셜 라인업.']
 };
 const previewImage = document.querySelector('#preview-image');
-const galleries = {"metron":["metron-5814","metron-5798","metron-5770","metron-5791","metron-5771","metron-5792","metron-5767","metron-5793","metron-5769","metron-5795","metron-5764","metron-5790","metron-5810","metron-5818"],"cabin":["cabin-light-duo","cabin-dark-duo","cabin-silver","cabin-black","cabin-red","cabin-front","una08738","una08698","una08692","cabin-open","una05368","una05365","una05287","una05355","una05317","cabin-lock","cabin-lining"],"essential":["una05142","una05159","una05176","una05250","una05267","una05273","una05395"]};
+const galleries = {"metron":["metron-5814","metron-5798","metron-5770","metron-5791","metron-5771","metron-5792","metron-5767","metron-5793","metron-5769","metron-5795","metron-5764","metron-5790","metron-5810","metron-5818"],"cabin":["cabin-red-blue","cabin-light-duo","cabin-dark-duo","cabin-silver","cabin-black","cabin-red","cabin-front","una08738","una08698","una08692","cabin-open","una05368","una05365","una05287","una05355","una05317","cabin-lock","cabin-lining"],"essential":["una05142","una05159","una05176","una05250","una05267","una05273","una05395"]};
 const galleryLabels = {"metron":"메트론","cabin":"메트론 카빈","essential":"에센셜"};
 let currentModel = 'cabin';
 let currentPhoto = 0;
