@@ -315,7 +315,7 @@ const modelDetails = {
   essential: ['ESSENTIAL', '20·24·28인치로 구성된 에센셜 라인업.']
 };
 const previewImage = document.querySelector('#preview-image');
-const galleries = {"metron":["metron-5814","metron-5798","metron-5770","metron-5791","metron-5771","metron-5792","metron-5767","metron-5793","metron-5769","metron-5795","metron-5764","metron-5790","metron-5810","metron-5818"],"cabin":["cabin-red-blue","cabin-light-duo","cabin-dark-duo","cabin-silver","cabin-black","cabin-red","cabin-front","una08738","una08698","una08692","cabin-open","una05368","una05365","una05287","una05355","una05317","cabin-lock","cabin-lining"],"essential":["una05142","una05159","una05176","una05250","una05267","una05273","una05395"]};
+const galleries = {"metron":["metron-5814","metron-5798","metron-5770","metron-5791","metron-5771","metron-5792","metron-5767","metron-5793","metron-5769","metron-5795","metron-5764","metron-5790","metron-5810","metron-5818"],"cabin":["cabin-red-blue","cabin-light-duo","cabin-dark-duo","cabin-silver","cabin-black","cabin-red","cabin-front","una08738","una08698","una08692","cabin-open","una05368","una05365","una05287","una05355","una05317","cabin-lock","cabin-lining"],"essential":["una05142","essential-black-lineup","una05159","una05176","una05250","una05267","una05273","una05395"]};
 const galleryLabels = {"metron":"메트론","cabin":"메트론 카빈","essential":"에센셜"};
 let currentModel = 'cabin';
 let currentPhoto = 0;
@@ -323,7 +323,7 @@ let currentPanel = 'overview';
 const detailPhotos = {
   cabin: [['cabin-open','위로 열리는 구조'],['cabin-lock','TSA 잠금장치'],['cabin-lining','레드 안감']],
   metron: [['metron-5767','글레이셔 블루 잠금장치와 프레임'],['metron-5793','바토리 레드 측면과 손잡이'],['metron-5795','바토리 레드 반대쪽 측면']],
-  essential: [['una05250','화이트 프레임과 잠금장치'],['una05267','실버 프레임과 손잡이'],['una05395','상단 손잡이와 모서리']]
+  essential: [['essential-black-handle','트리플블랙 손잡이와 ARME 로고'],['una05250','화이트 프레임과 잠금장치'],['una05267','실버 프레임과 손잡이'],['una05395','상단 손잡이와 모서리']]
 };
 function activePhotos() {
   return currentPanel === 'detail-shots' ? detailPhotos[currentModel] : galleries[currentModel];
@@ -372,9 +372,9 @@ for (const button of tabs) {
 for (const button of document.querySelectorAll('[data-model]')) {
   button.addEventListener('click', () => {
     const {model, galleryPhoto, openPanel} = button.dataset;
-    const photo = galleryPhoto || (model === 'cabin' ? 'cabin-red' : '');
     const {size} = button.dataset;
     const color = size ? button.closest('.essential-card').querySelector('input:checked').value : '';
+    const photo = color === 'triple-black' ? 'essential-black-lineup' : galleryPhoto || (model === 'cabin' ? 'cabin-red' : '');
     const route = ['product-' + model, photo, openPanel || '', size || '', color].join('/');
     location.hash = route;
   });
@@ -383,6 +383,10 @@ const essentialColorNames = {"cream-white":"크림화이트","triple-black":"트
 for (const swatches of document.querySelectorAll('.essential-colors')) {
   swatches.addEventListener('change', event => {
     swatches.querySelector('output').textContent = event.target.dataset.label;
+    const image = swatches.closest('.essential-card').querySelector('img');
+    const isBlack = event.target.value === 'triple-black';
+    image.src = isBlack ? 'assets/essential-black-lineup.webp' : 'assets/una05142.webp';
+    image.alt = isBlack ? '에센셜 트리플블랙 라인업 대표 이미지' : '에센셜 라인업 대표 이미지';
   });
 }
 function openProduct(key, photo, panel, size, color) {
