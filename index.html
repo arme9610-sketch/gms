@@ -177,6 +177,19 @@ dialog{width:min(920px,calc(100% - 24px));max-height:calc(100dvh - 32px);padding
   #product-preview .modal-body{grid-template-columns:1fr}
   #product-preview .gallery img{height:clamp(290px,80vw,500px);padding:32px 44px}
 }
+
+.essential-card{cursor:default}
+.essential-card-open{position:absolute;inset:0;background:none;color:inherit;border:0;cursor:pointer;text-align:left;font:inherit}
+.essential-card-open img{height:58%;bottom:20%;object-position:center 67%}
+.essential-colors{position:absolute;bottom:15px;left:18px;right:58px;margin:0;padding:0;border:0;min-width:0}
+.essential-colors legend{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+.essential-swatches{display:flex;gap:8px;align-items:center}
+.essential-swatches label{position:relative;cursor:pointer;display:grid;place-items:center;width:30px;height:30px}
+.essential-swatches input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:pointer}
+.essential-swatches span{width:19px;height:19px;border-radius:50%;background:var(--swatch);border:1px solid #0003;pointer-events:none}
+.essential-swatches input:checked+span,.essential-swatches input:focus-visible+span{outline:2px solid #0066cc;outline-offset:3px}
+.essential-colors output{display:block;font-size:13px;margin:4px 0 0 4px}
+#essential-selection{font-weight:700}
 </style>
 </head>
 <body id="home">
@@ -244,10 +257,18 @@ dialog{width:min(920px,calc(100% - 24px));max-height:calc(100dvh - 32px);padding
 <a href="#collection-accessories"><span aria-hidden="true">＋</span><strong>악세서리</strong></a></nav>
     <section class="store-shelf" data-collection="essential" hidden aria-labelledby="collection-title-essential">
  <div class="store-heading"><h2 id="collection-title-essential">Essential. <span>라인업 살펴보기.</span></h2><div class="store-controls"><button type="button" data-scroll="-1" aria-label="이전 제품 카드">‹</button><button type="button" data-scroll="1" aria-label="다음 제품 카드">›</button></div></div>
- <div class="store-rail" aria-label="Essential 제품 카드"><button class="store-card store-card-dark" type="button" data-model="essential" data-gallery-photo="una05142" aria-label="ESSENTIAL 실버와 화이트 더 알아보기"><span class="store-card-copy"><small>실버와 화이트</small><strong>ESSENTIAL</strong></span><img src="assets/una05142.webp" alt="" loading="lazy"><span class="store-card-plus" aria-hidden="true">＋</span></button>
-<button class="store-card " type="button" data-model="essential" data-gallery-photo="una05267" aria-label="ESSENTIAL 실버 프레임 더 알아보기"><span class="store-card-copy"><small>실버 프레임</small><strong>ESSENTIAL</strong></span><img src="assets/una05267.webp" alt="" loading="lazy"><span class="store-card-plus" aria-hidden="true">＋</span></button>
-<button class="store-card " type="button" data-model="essential" data-gallery-photo="una05250" aria-label="ESSENTIAL 화이트 잠금장치 더 알아보기"><span class="store-card-copy"><small>화이트 잠금장치</small><strong>ESSENTIAL</strong></span><img src="assets/una05250.webp" alt="" loading="lazy"><span class="store-card-plus" aria-hidden="true">＋</span></button>
-<button class="store-card store-card-dark" type="button" data-model="essential" data-gallery-photo="una05159" aria-label="ESSENTIAL 두 가지 실루엣 더 알아보기"><span class="store-card-copy"><small>두 가지 실루엣</small><strong>ESSENTIAL</strong></span><img src="assets/una05159.webp" alt="" loading="lazy"><span class="store-card-plus" aria-hidden="true">＋</span></button></div>
+ <div class="store-rail" aria-label="Essential 제품 카드"><article class="store-card essential-card">
+ <button class="essential-card-open" type="button" data-model="essential" data-size="20" data-gallery-photo="una05142" aria-label="에센셜 20인치 더 알아보기"><span class="store-card-copy"><small>ESSENTIAL</small><strong>20인치</strong></span><img src="assets/una05142.webp" alt="에센셜 라인업 대표 이미지" loading="lazy"><span class="store-card-plus" aria-hidden="true">＋</span></button>
+ <fieldset class="essential-colors"><legend>20인치 색상</legend><div class="essential-swatches"><label title="크림화이트"><input type="radio" name="essential-color-20" value="cream-white" data-label="크림화이트" aria-label="크림화이트" checked><span style="--swatch:#f0ede2" aria-hidden="true"></span></label><label title="트리플블랙"><input type="radio" name="essential-color-20" value="triple-black" data-label="트리플블랙" aria-label="트리플블랙" ><span style="--swatch:#202021" aria-hidden="true"></span></label><label title="스페이스실버"><input type="radio" name="essential-color-20" value="space-silver" data-label="스페이스실버" aria-label="스페이스실버" ><span style="--swatch:#b6bcc6" aria-hidden="true"></span></label><label title="다크그레이"><input type="radio" name="essential-color-20" value="dark-gray" data-label="다크그레이" aria-label="다크그레이" ><span style="--swatch:#575859" aria-hidden="true"></span></label></div><output aria-live="polite">크림화이트</output></fieldset>
+</article>
+<article class="store-card essential-card">
+ <button class="essential-card-open" type="button" data-model="essential" data-size="24" data-gallery-photo="una05142" aria-label="에센셜 24인치 더 알아보기"><span class="store-card-copy"><small>ESSENTIAL</small><strong>24인치</strong></span><img src="assets/una05142.webp" alt="에센셜 라인업 대표 이미지" loading="lazy"><span class="store-card-plus" aria-hidden="true">＋</span></button>
+ <fieldset class="essential-colors"><legend>24인치 색상</legend><div class="essential-swatches"><label title="크림화이트"><input type="radio" name="essential-color-24" value="cream-white" data-label="크림화이트" aria-label="크림화이트" checked><span style="--swatch:#f0ede2" aria-hidden="true"></span></label><label title="트리플블랙"><input type="radio" name="essential-color-24" value="triple-black" data-label="트리플블랙" aria-label="트리플블랙" ><span style="--swatch:#202021" aria-hidden="true"></span></label><label title="스페이스실버"><input type="radio" name="essential-color-24" value="space-silver" data-label="스페이스실버" aria-label="스페이스실버" ><span style="--swatch:#b6bcc6" aria-hidden="true"></span></label><label title="다크그레이"><input type="radio" name="essential-color-24" value="dark-gray" data-label="다크그레이" aria-label="다크그레이" ><span style="--swatch:#575859" aria-hidden="true"></span></label></div><output aria-live="polite">크림화이트</output></fieldset>
+</article>
+<article class="store-card essential-card">
+ <button class="essential-card-open" type="button" data-model="essential" data-size="28" data-gallery-photo="una05142" aria-label="에센셜 28인치 더 알아보기"><span class="store-card-copy"><small>ESSENTIAL</small><strong>28인치</strong></span><img src="assets/una05142.webp" alt="에센셜 라인업 대표 이미지" loading="lazy"><span class="store-card-plus" aria-hidden="true">＋</span></button>
+ <fieldset class="essential-colors"><legend>28인치 색상</legend><div class="essential-swatches"><label title="크림화이트"><input type="radio" name="essential-color-28" value="cream-white" data-label="크림화이트" aria-label="크림화이트" checked><span style="--swatch:#f0ede2" aria-hidden="true"></span></label><label title="트리플블랙"><input type="radio" name="essential-color-28" value="triple-black" data-label="트리플블랙" aria-label="트리플블랙" ><span style="--swatch:#202021" aria-hidden="true"></span></label><label title="스페이스실버"><input type="radio" name="essential-color-28" value="space-silver" data-label="스페이스실버" aria-label="스페이스실버" ><span style="--swatch:#b6bcc6" aria-hidden="true"></span></label><label title="다크그레이"><input type="radio" name="essential-color-28" value="dark-gray" data-label="다크그레이" aria-label="다크그레이" ><span style="--swatch:#575859" aria-hidden="true"></span></label></div><output aria-live="polite">크림화이트</output></fieldset>
+</article></div>
 </section>
 <section class="store-shelf" data-collection="cabin" hidden aria-labelledby="collection-title-cabin">
  <div class="store-heading"><h2 id="collection-title-cabin">Cabin. <span>라인업 살펴보기.</span></h2><div class="store-controls"><button type="button" data-scroll="-1" aria-label="이전 제품 카드">‹</button><button type="button" data-scroll="1" aria-label="다음 제품 카드">›</button></div></div>
@@ -282,7 +303,7 @@ dialog{width:min(920px,calc(100% - 24px));max-height:calc(100dvh - 32px);padding
 <button type="button" data-model="metron"><strong>Metron</strong><span>세로형 메트론 라인업</span></button>
 </div>
 <div class="tab-row" role="group" aria-label="상세 정보 보기"><button type="button" class="tab" aria-pressed="true" data-panel="overview">제품 소개</button><button type="button" class="tab" aria-pressed="false" data-panel="detail-shots">디테일컷</button><button type="button" class="tab" aria-pressed="false" data-panel="payment">결제 방식 예시</button></div>
-<div id="overview"><p id="preview-description"></p><section id="cabin-colors" hidden aria-label="메트론 카빈 컬러"><h3>컬러</h3><div class="color-list"><button class="color-chip" type="button" data-photo="cabin-silver" style="--swatch:#b6bcc6">Space Silver</button><button class="color-chip" type="button" data-photo="cabin-red" style="--swatch:#c62e3c">Bathory Red</button><button class="color-chip" type="button" data-photo="cabin-red-blue" style="--swatch:#aac7df">Clacier Blue</button><button class="color-chip" type="button" data-photo="cabin-dark-duo" style="--swatch:#575859">Dark Gray</button><button class="color-chip" type="button" data-photo="cabin-black" style="--swatch:#202021">Tripple Black</button><button class="color-chip" type="button" data-photo="una05368" style="--swatch:#f0ede2">Cream White</button><button class="color-chip" type="button" data-photo="una05365" style="--swatch:#e9bfc9">Dawn Pink</button></div></section></div>
+<div id="overview"><p id="preview-description"></p><p id="essential-selection" hidden></p><section id="cabin-colors" hidden aria-label="메트론 카빈 컬러"><h3>컬러</h3><div class="color-list"><button class="color-chip" type="button" data-photo="cabin-silver" style="--swatch:#b6bcc6">Space Silver</button><button class="color-chip" type="button" data-photo="cabin-red" style="--swatch:#c62e3c">Bathory Red</button><button class="color-chip" type="button" data-photo="cabin-red-blue" style="--swatch:#aac7df">Clacier Blue</button><button class="color-chip" type="button" data-photo="cabin-dark-duo" style="--swatch:#575859">Dark Gray</button><button class="color-chip" type="button" data-photo="cabin-black" style="--swatch:#202021">Tripple Black</button><button class="color-chip" type="button" data-photo="una05368" style="--swatch:#f0ede2">Cream White</button><button class="color-chip" type="button" data-photo="una05365" style="--swatch:#e9bfc9">Dawn Pink</button></div></section></div>
 <div id="detail-shots" hidden><p id="detail-caption" aria-live="polite"></p><p class="sample">사진 아래 화살표로 다른 디테일을 볼 수 있어요.</p></div>
 <div id="payment" hidden><p class="sample">디자인 시안용 예시입니다. 실제 결제는 진행되지 않습니다.</p><div class="payment-options" role="group" aria-label="결제 방식 예시"><label><input type="radio" name="payment" checked>신용·체크카드</label><label><input type="radio" name="payment">간편결제</label><label><input type="radio" name="payment">계좌이체</label></div></div>
 </div></div></main>
@@ -352,11 +373,24 @@ for (const button of document.querySelectorAll('[data-model]')) {
   button.addEventListener('click', () => {
     const {model, galleryPhoto, openPanel} = button.dataset;
     const photo = galleryPhoto || (model === 'cabin' ? 'cabin-red' : '');
-    const route = ['product-' + model, photo, openPanel || ''].join('/');
+    const {size} = button.dataset;
+    const color = size ? button.closest('.essential-card').querySelector('input:checked').value : '';
+    const route = ['product-' + model, photo, openPanel || '', size || '', color].join('/');
     location.hash = route;
   });
 }
-function openProduct(key, photo, panel) {
+const essentialColorNames = {"cream-white":"크림화이트","triple-black":"트리플블랙","space-silver":"스페이스실버","dark-gray":"다크그레이"};
+for (const swatches of document.querySelectorAll('.essential-colors')) {
+  swatches.addEventListener('change', event => {
+    swatches.querySelector('output').textContent = event.target.dataset.label;
+  });
+}
+function openProduct(key, photo, panel, size, color) {
+  const selection = document.querySelector('#essential-selection');
+  const colorName = Object.hasOwn(essentialColorNames, color) ? essentialColorNames[color] : '';
+  const hasSelection = key === 'essential' && ['20','24','28'].includes(size) && Boolean(colorName);
+  selection.hidden = !hasSelection;
+  selection.textContent = hasSelection ? size + '인치 · ' + colorName : '';
   const [name, description] = modelDetails[key];
   document.querySelector('#preview-title').textContent = name;
   document.querySelector('#preview-description').textContent = description;
@@ -380,12 +414,12 @@ const menuLinks = [...document.querySelectorAll('a[href^="#collection-"]')];
 function updateStoreView() {
   const route = location.hash.slice(1);
   const selected = shelves.find(shelf => route === 'collection-' + shelf.dataset.collection);
-  const [productRoute, photo, panel] = route.split('/');
+  const [productRoute, photo, panel, size, color] = route.split('/');
   const product = productRoute.match(/^product-(essential|cabin|metron)$/)?.[1];
   homeView.hidden = Boolean(selected || product);
   storeView.hidden = !selected;
   preview.hidden = !product;
-  if (product) openProduct(product, photo, panel);
+  if (product) openProduct(product, photo, panel, size, color);
   for (const shelf of shelves) shelf.hidden = shelf !== selected;
   for (const link of menuLinks) {
     if (link.hash === location.hash || link.hash === '#collection-' + product) link.setAttribute('aria-current', 'page');
