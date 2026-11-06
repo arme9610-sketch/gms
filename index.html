@@ -14,7 +14,7 @@
 .end{background:#1d1e1c;color:#fff;padding:49px 0}.end .wrap{display:flex;justify-content:space-between;align-items:center;gap:18px}.end p{margin:0;font-size:12px;color:#d7d7d1}.end a{font-size:13px}
 @media(max-width:720px){.wrap{width:calc(100% - 32px)}.nav .wrap{height:55px}.links{gap:14px}.intro{padding-top:35px;display:block}.intro p{text-align:left;margin:12px 0 0}.hero{grid-template-columns:1fr;min-height:0;border-radius:18px}.hero-copy{padding:28px 22px 22px}.hero h2{margin:12px 0}.hero p{font-size:15px;margin-bottom:15px}.hero img{aspect-ratio:1.34;height:auto}.lineup{padding:55px 0 43px}.grid{grid-template-columns:1fr}.card img{aspect-ratio:1.4}.end .wrap{flex-wrap:wrap}}
 @media(prefers-reduced-motion:reduce){:root{scroll-behavior:auto}}
-.details{padding:0 0 76px}.details figure{margin:0;border-radius:18px;overflow:hidden;background:#f3f4f6}.details img{width:100%;aspect-ratio:1;object-fit:cover;display:block}.details figcaption{padding:18px 20px;font-size:15px;font-weight:700}.hero img{object-position:center 57%}
+.hero img{object-position:center 57%}
 
 .pill,.photo-button,.close-preview,.tab{font:inherit;cursor:pointer;border:0}.pill{font-size:13px;transition:background .2s,transform .2s}.pill:hover{background:#414340}.pill:active{transform:scale(.97)}button:focus-visible{outline:2px solid #4561ad;outline-offset:3px}.photo-button{padding:0;width:100%;overflow:hidden;display:block;background:#eeeee9}.card img{transition:transform .45s cubic-bezier(.2,.65,.25,1)}@media(hover:hover){.card:hover img,.card:focus-within img{transform:scale(1.045)}}
 dialog{width:min(920px,calc(100% - 24px));max-height:calc(100dvh - 32px);padding:0;border:0;border-radius:23px;color:inherit;background:#fff;overscroll-behavior:contain}dialog::backdrop{background:#17191c88;backdrop-filter:blur(8px)}dialog[open]{animation:appear .28s ease-out}body:has(dialog[open]){overflow:hidden}@keyframes appear{from{opacity:0;transform:translateY(12px) scale(.985)}to{opacity:1;transform:none}}.modal-top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:15px clamp(18px,4vw,42px);position:sticky;top:0;background:#fffffff5;z-index:1;border-bottom:1px solid #ececea}.close-preview{border-radius:50%;width:42px;height:42px;font-size:24px;background:#eee;color:#222}.modal-body{padding:clamp(19px,4vw,42px);display:grid;grid-template-columns:1.15fr 1fr;gap:26px}.modal-body img{width:100%;aspect-ratio:1.07;object-fit:cover;border-radius:15px}.modal-body h2{font-size:clamp(32px,5vw,52px);letter-spacing:-.07em;margin:10px 0}.modal-body p{line-height:1.6}.tab-row{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 14px}.tab{border-radius:22px;background:#f1f1f1;padding:10px 14px}.tab[aria-pressed=true]{background:#20211f;color:white}.payment-options{display:grid;gap:7px}.payment-options label{display:flex;gap:8px;align-items:center;padding:12px;border:1px solid #dedede;border-radius:10px}.payment-options label:has(input:checked){border-color:#20211f;background:#f5f5f5}.sample{font-size:12px;color:#565656}@media(max-width:650px){.modal-body{grid-template-columns:1fr}.modal-body img{aspect-ratio:1.4}}@media(prefers-reduced-motion:reduce){*,dialog[open]{transition:none!important;animation:none!important}}
@@ -173,15 +173,6 @@ dialog{width:min(920px,calc(100% - 24px));max-height:calc(100dvh - 32px);padding
   </div>
 </section>
 </div>
-<div class="wrap">
-<section class="details" id="details" aria-labelledby="detail-title">
-<div class="section-head"><div><span class="label">METRON CABIN</span><h2 id="detail-title">가까이에서 살펴보기.</h2></div></div>
-<div class="grid">
-<figure><img src="assets/cabin-open.webp" alt="위로 열리는 메트론 카빈과 레드 수납 공간" loading="lazy"><figcaption>위로 열리는 구조</figcaption></figure>
-<figure><img src="assets/cabin-lock.webp" alt="메트론 카빈 TSA 잠금장치 확대 사진" loading="lazy"><figcaption>TSA 잠금장치</figcaption></figure>
-<figure><img src="assets/cabin-lining.webp" alt="ARME 로고가 새겨진 레드 안감" loading="lazy"><figcaption>레드 안감</figcaption></figure>
-</div></section>
-</div>
 <section id="accessories" class="accessories-section" aria-labelledby="accessories-title">
   <h2 id="accessories-title">악세서리</h2>
   <p>제품 소개 준비 중</p>
@@ -192,8 +183,9 @@ dialog{width:min(920px,calc(100% - 24px));max-height:calc(100dvh - 32px);padding
 <header class="modal-top"><span class="label">ARME / PRODUCT PREVIEW</span><button class="close-preview" type="button" aria-label="상세 보기 닫기" autofocus>×</button></header>
 <div class="modal-body"><div class="gallery"><img id="preview-image" alt=""><div class="gallery-controls"><button type="button" data-step="-1" aria-label="이전 사진">‹</button><span class="photo-count" aria-live="polite"></span><button type="button" data-step="1" aria-label="다음 사진">›</button></div></div><div>
 <span class="label">TRAVEL COLLECTION</span><h2 id="preview-title"></h2>
-<div class="tab-row" role="group" aria-label="상세 정보 보기"><button type="button" class="tab" aria-pressed="true" data-panel="overview">제품 소개</button><button type="button" class="tab" aria-pressed="false" data-panel="payment">결제 방식 예시</button></div>
+<div class="tab-row" role="group" aria-label="상세 정보 보기"><button type="button" class="tab" aria-pressed="true" data-panel="overview">제품 소개</button><button type="button" class="tab" aria-pressed="false" data-panel="detail-shots">디테일컷</button><button type="button" class="tab" aria-pressed="false" data-panel="payment">결제 방식 예시</button></div>
 <div id="overview"><p id="preview-description"></p><section id="cabin-colors" hidden aria-label="메트론 카빈 컬러"><h3>컬러</h3><div class="color-list"><button class="color-chip" type="button" data-photo="cabin-silver" style="--swatch:#b6bcc6">Space Silver</button><button class="color-chip" type="button" data-photo="cabin-red" style="--swatch:#c62e3c">Bathory Red</button><button class="color-chip" type="button" data-photo="cabin-red-blue" style="--swatch:#aac7df">Clacier Blue</button><button class="color-chip" type="button" data-photo="cabin-dark-duo" style="--swatch:#575859">Dark Gray</button><button class="color-chip" type="button" data-photo="cabin-black" style="--swatch:#202021">Tripple Black</button><button class="color-chip" type="button" data-photo="una05368" style="--swatch:#f0ede2">Cream White</button><button class="color-chip" type="button" data-photo="una05365" style="--swatch:#e9bfc9">Dawn Pink</button></div></section></div>
+<div id="detail-shots" hidden><p id="detail-caption" aria-live="polite"></p><p class="sample">사진 아래 화살표로 다른 디테일을 볼 수 있어요.</p></div>
 <div id="payment" hidden><p class="sample">디자인 시안용 예시입니다. 실제 결제는 진행되지 않습니다.</p><div class="payment-options" role="group" aria-label="결제 방식 예시"><label><input type="radio" name="payment" checked>신용·체크카드</label><label><input type="radio" name="payment">간편결제</label><label><input type="radio" name="payment">계좌이체</label></div></div>
 </div></div></dialog>
 <script>
@@ -208,6 +200,15 @@ const galleries = {"metron":["metron-5814","metron-5798","metron-5770","metron-5
 const galleryLabels = {"metron":"메트론","cabin":"메트론 카빈","essential":"에센셜"};
 let currentModel = 'cabin';
 let currentPhoto = 0;
+let currentPanel = 'overview';
+const detailPhotos = {
+  cabin: [['cabin-open','위로 열리는 구조'],['cabin-lock','TSA 잠금장치'],['cabin-lining','레드 안감']],
+  metron: [['metron-5767','글레이셔 블루 잠금장치와 프레임'],['metron-5793','바토리 레드 측면과 손잡이'],['metron-5795','바토리 레드 반대쪽 측면']],
+  essential: [['una05250','화이트 프레임과 잠금장치'],['una05267','실버 프레임과 손잡이'],['una05395','상단 손잡이와 모서리']]
+};
+function activePhotos() {
+  return currentPanel === 'detail-shots' ? detailPhotos[currentModel] : galleries[currentModel];
+}
 const cabinColors = document.querySelector('#cabin-colors');
 const colorButtons = cabinColors.querySelectorAll('[data-photo]');
 for (const button of colorButtons) {
@@ -217,24 +218,29 @@ for (const button of colorButtons) {
   });
 }
 function showPhoto() {
-  const photos = galleries[currentModel];
-  const photo = photos[currentPhoto];
+  const photos = activePhotos();
+  const isDetail = currentPanel === 'detail-shots';
+  const [photo, caption] = isDetail ? photos[currentPhoto] : [photos[currentPhoto], ''];
+  document.querySelector('#detail-caption').textContent = caption;
   previewImage.src = 'assets/' + photo + '.webp';
   for (const button of colorButtons) {
     button.setAttribute('aria-pressed', currentModel === 'cabin' && button.dataset.photo === photo);
   }
-  previewImage.alt = galleryLabels[currentModel] + ' 촬영 컷 ' + (currentPhoto + 1);
+  previewImage.alt = galleryLabels[currentModel] + ' ' + (caption || '촬영 컷 ' + (currentPhoto + 1));
   preview.querySelector('.photo-count').textContent = (currentPhoto + 1) + ' / ' + photos.length;
 }
 for (const control of preview.querySelectorAll('[data-step]')) {
   control.addEventListener('click', () => {
-    const count = galleries[currentModel].length;
+    const count = activePhotos().length;
     currentPhoto = (currentPhoto + Number(control.dataset.step) + count) % count;
     showPhoto();
   });
 }
 const tabs = [...preview.querySelectorAll('[data-panel]')];
 function showPanel(panel) {
+  if (panel !== currentPanel && (panel === 'detail-shots' || currentPanel === 'detail-shots')) currentPhoto = 0;
+  currentPanel = panel;
+  showPhoto();
   for (const button of tabs) {
     const active = button.dataset.panel === panel;
     button.setAttribute('aria-pressed', active);
@@ -253,7 +259,6 @@ for (const button of document.querySelectorAll('[data-model]')) {
     currentModel = key;
     cabinColors.hidden = key !== 'cabin';
     currentPhoto = 0;
-    showPhoto();
     preview.querySelector('input[name=payment]').checked = true;
     showPanel(button.dataset.openPanel || 'overview');
     preview.showModal();
