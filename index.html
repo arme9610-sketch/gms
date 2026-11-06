@@ -120,19 +120,47 @@ dialog{width:min(920px,calc(100% - 24px));max-height:calc(100dvh - 32px);padding
   .banner-cabin .banner-art::before{bottom:9%;width:66%}
 }
 @media(prefers-reduced-motion:reduce){.banner-cabin .banner-art .cabin-cutout{animation:none}}
+
+[hidden]{display:none!important}
+#store-view{background:#f5f5f7;min-height:70vh;color:#1d1d1f}
+.store-inner{width:min(1660px,100%);margin:auto;padding:clamp(36px,6vw,80px) clamp(18px,4vw,54px) 76px}
+.store-inner h1{font-size:clamp(45px,6vw,76px);letter-spacing:-.07em;margin:0}
+.store-categories{display:flex;gap:clamp(12px,4vw,60px);overflow-x:auto;padding:36px 2px 58px}
+.store-categories a{flex:0 0 86px;text-align:center;font-size:13px;display:grid;gap:11px;justify-items:center}
+.store-categories img,.store-categories a>span{width:80px;height:62px;object-fit:contain;display:grid;place-items:center;border-radius:8px}
+.store-categories a>span{background:#e8e8ed;font-size:24px}
+.store-categories a[aria-current],.site-menu a[aria-current]{text-decoration:underline;text-underline-offset:5px}
+.store-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}
+.store-heading h2{font-size:clamp(23px,3vw,34px);letter-spacing:-.045em;margin:0}
+.store-heading h2 span{color:#66666c}
+.store-controls{display:flex;gap:8px}
+.store-controls button,.store-card-plus{width:38px;height:38px;border:0;border-radius:50%;background:#e8e8ed;color:#222;display:grid;place-items:center;font-size:22px;cursor:pointer}
+.store-controls button:disabled{opacity:.38;cursor:default}
+.store-rail{display:grid;grid-auto-flow:column;grid-auto-columns:clamp(260px,27vw,398px);gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:5px 4px 18px}
+.store-card{border:0;border-radius:25px;background:#fff;color:#1d1d1f;box-shadow:0 3px 12px #0001;position:relative;height:clamp(370px,40vw,490px);overflow:hidden;text-align:left;cursor:pointer;font:inherit;scroll-snap-align:start;isolation:isolate}
+.store-card-dark{background:#1b1b1d;color:#fff}
+.store-card img{position:absolute;inset:auto 0 0;width:100%;height:72%;object-fit:cover;object-position:center 60%;z-index:-1;transition:transform .35s ease}
+.store-card img[src$="cabin-bathory-front.webp"]{object-fit:contain;padding:22px}
+.store-card-copy{position:absolute;top:25px;left:23px;right:20px;display:grid;gap:8px}
+.store-card-copy small{font-size:12px;font-weight:700;letter-spacing:.05em}
+.store-card-copy strong{font-size:clamp(25px,3vw,34px);letter-spacing:-.045em;line-height:1.05}
+.store-card-plus{position:absolute;bottom:14px;right:14px;font-size:18px}
+@media(hover:hover){.store-card:hover img{transform:scale(1.045)}}
+@media(max-width:580px){.store-categories{padding-bottom:38px}.store-rail{grid-auto-columns:min(79vw,340px)}.store-card{height:370px}}
+@media(prefers-reduced-motion:reduce){.store-card img{transition:none}}
 </style>
 </head>
 <body id="home">
 <header class="nav">
   <nav class="site-menu wrap" aria-label="주 메뉴">
     <a class="logo" href="#home" aria-label="ARME 홈">ARME</a>
-    <a href="#essential">Essential</a>
-    <a href="#cabin">Cabin</a>
-    <a href="#metron">Metron</a>
-    <a href="#accessories">악세서리</a>
+    <a href="#collection-essential">Essential</a>
+    <a href="#collection-cabin">Cabin</a>
+    <a href="#collection-metron">Metron</a>
+    <a href="#collection-accessories">악세서리</a>
   </nav>
 </header>
-<main>
+<main id="home-view">
 <div class="product-banners" id="lineup">
 <section id="cabin" class="product-banner banner-cabin" aria-labelledby="banner-cabin">
   <div class="banner-art">
@@ -177,6 +205,43 @@ dialog{width:min(920px,calc(100% - 24px));max-height:calc(100dvh - 32px);padding
   <h2 id="accessories-title">악세서리</h2>
   <p>제품 소개 준비 중</p>
 </section>
+</main>
+<main id="store-view" hidden>
+  <div class="store-inner">
+    <h1>스토어</h1>
+    <nav class="store-categories" aria-label="제품 카테고리"><a href="#collection-essential"><img src="assets/una05142.webp" alt="" loading="lazy"><strong>Essential</strong></a>
+<a href="#collection-cabin"><img src="assets/cabin-bathory-front.webp" alt="" loading="lazy"><strong>Cabin</strong></a>
+<a href="#collection-metron"><img src="assets/metron-5814.webp" alt="" loading="lazy"><strong>Metron</strong></a>
+<a href="#collection-accessories"><span aria-hidden="true">＋</span><strong>악세서리</strong></a></nav>
+    <section class="store-shelf" data-collection="essential" hidden aria-labelledby="collection-title-essential">
+ <div class="store-heading"><h2 id="collection-title-essential">Essential. <span>라인업 살펴보기.</span></h2><div class="store-controls"><button type="button" data-scroll="-1" aria-label="이전 제품 카드">‹</button><button type="button" data-scroll="1" aria-label="다음 제품 카드">›</button></div></div>
+ <div class="store-rail" aria-label="Essential 제품 카드"><button class="store-card store-card-dark" type="button" data-model="essential" data-gallery-photo="una05142" aria-label="ESSENTIAL 실버와 화이트 더 알아보기"><span class="store-card-copy"><small>실버와 화이트</small><strong>ESSENTIAL</strong></span><img src="assets/una05142.webp" alt="" loading="lazy"><span class="store-card-plus" aria-hidden="true">＋</span></button>
+<button class="store-card " type="button" data-model="essential" data-gallery-photo="una05267" aria-label="ESSENTIAL 실버 프레임 더 알아보기"><span class="store-card-copy"><small>실버 프레임</small><strong>ESSENTIAL</strong></span><img src="assets/una05267.webp" alt="" loading="lazy"><span class="store-card-plus" aria-hidden="true">＋</span></button>
+<button class="store-card " type="button" data-model="essential" data-gallery-photo="una05250" aria-label="ESSENTIAL 화이트 잠금장치 더 알아보기"><span class="store-card-copy"><small>화이트 잠금장치</small><strong>ESSENTIAL</strong></span><img src="assets/una05250.webp" alt="" loading="lazy"><span class="store-card-plus" aria-hidden="true">＋</span></button>
+<button class="store-card store-card-dark" type="button" data-model="essential" data-gallery-photo="una05159" aria-label="ESSENTIAL 두 가지 실루엣 더 알아보기"><span class="store-card-copy"><small>두 가지 실루엣</small><strong>ESSENTIAL</strong></span><img src="assets/una05159.webp" alt="" loading="lazy"><span class="store-card-plus" aria-hidden="true">＋</span></button></div>
+</section>
+<section class="store-shelf" data-collection="cabin" hidden aria-labelledby="collection-title-cabin">
+ <div class="store-heading"><h2 id="collection-title-cabin">Cabin. <span>라인업 살펴보기.</span></h2><div class="store-controls"><button type="button" data-scroll="-1" aria-label="이전 제품 카드">‹</button><button type="button" data-scroll="1" aria-label="다음 제품 카드">›</button></div></div>
+ <div class="store-rail" aria-label="Cabin 제품 카드"><button class="store-card store-card-dark" type="button" data-model="cabin" data-gallery-photo="cabin-red" aria-label="Bathory Red METRON CABIN 더 알아보기"><span class="store-card-copy"><small>METRON CABIN</small><strong>Bathory Red</strong></span><img src="assets/cabin-bathory-front.webp" alt="" loading="lazy"><span class="store-card-plus" aria-hidden="true">＋</span></button>
+<button class="store-card " type="button" data-model="cabin" data-gallery-photo="cabin-red-blue" aria-label="Clacier Blue METRON CABIN 더 알아보기"><span class="store-card-copy"><small>METRON CABIN</small><strong>Clacier Blue</strong></span><img src="assets/cabin-red-blue.webp" alt="" loading="lazy"><span class="store-card-plus" aria-hidden="true">＋</span></button>
+<button class="store-card " type="button" data-model="cabin" data-gallery-photo="cabin-silver" aria-label="Space Silver METRON CABIN 더 알아보기"><span class="store-card-copy"><small>METRON CABIN</small><strong>Space Silver</strong></span><img src="assets/cabin-silver.webp" alt="" loading="lazy"><span class="store-card-plus" aria-hidden="true">＋</span></button>
+<button class="store-card store-card-dark" type="button" data-model="cabin" data-gallery-photo="cabin-black" aria-label="Tripple Black METRON CABIN 더 알아보기"><span class="store-card-copy"><small>METRON CABIN</small><strong>Tripple Black</strong></span><img src="assets/cabin-black.webp" alt="" loading="lazy"><span class="store-card-plus" aria-hidden="true">＋</span></button>
+<button class="store-card store-card-dark" type="button" data-model="cabin" data-gallery-photo="una05368" aria-label="Cream White METRON CABIN 더 알아보기"><span class="store-card-copy"><small>METRON CABIN</small><strong>Cream White</strong></span><img src="assets/una05368.webp" alt="" loading="lazy"><span class="store-card-plus" aria-hidden="true">＋</span></button>
+<button class="store-card " type="button" data-model="cabin" data-gallery-photo="una05365" aria-label="Dawn Pink METRON CABIN 더 알아보기"><span class="store-card-copy"><small>METRON CABIN</small><strong>Dawn Pink</strong></span><img src="assets/una05365.webp" alt="" loading="lazy"><span class="store-card-plus" aria-hidden="true">＋</span></button>
+<button class="store-card " type="button" data-model="cabin" data-gallery-photo="cabin-dark-duo" aria-label="Dark Gray METRON CABIN 더 알아보기"><span class="store-card-copy"><small>METRON CABIN</small><strong>Dark Gray</strong></span><img src="assets/cabin-dark-duo.webp" alt="" loading="lazy"><span class="store-card-plus" aria-hidden="true">＋</span></button></div>
+</section>
+<section class="store-shelf" data-collection="metron" hidden aria-labelledby="collection-title-metron">
+ <div class="store-heading"><h2 id="collection-title-metron">Metron. <span>라인업 살펴보기.</span></h2><div class="store-controls"><button type="button" data-scroll="-1" aria-label="이전 제품 카드">‹</button><button type="button" data-scroll="1" aria-label="다음 제품 카드">›</button></div></div>
+ <div class="store-rail" aria-label="Metron 제품 카드"><button class="store-card store-card-dark" type="button" data-model="metron" data-gallery-photo="metron-5814" aria-label="Glacier Blue METRON 더 알아보기"><span class="store-card-copy"><small>METRON</small><strong>Glacier Blue</strong></span><img src="assets/metron-5814.webp" alt="" loading="lazy"><span class="store-card-plus" aria-hidden="true">＋</span></button>
+<button class="store-card " type="button" data-model="metron" data-gallery-photo="metron-5798" aria-label="Bathory Red METRON 더 알아보기"><span class="store-card-copy"><small>METRON</small><strong>Bathory Red</strong></span><img src="assets/metron-5798.webp" alt="" loading="lazy"><span class="store-card-plus" aria-hidden="true">＋</span></button>
+<button class="store-card " type="button" data-model="metron" data-gallery-photo="metron-5810" aria-label="화이트 METRON 더 알아보기"><span class="store-card-copy"><small>METRON</small><strong>화이트</strong></span><img src="assets/metron-5810.webp" alt="" loading="lazy"><span class="store-card-plus" aria-hidden="true">＋</span></button>
+<button class="store-card store-card-dark" type="button" data-model="metron" data-gallery-photo="metron-5818" aria-label="실버 METRON 더 알아보기"><span class="store-card-copy"><small>METRON</small><strong>실버</strong></span><img src="assets/metron-5818.webp" alt="" loading="lazy"><span class="store-card-plus" aria-hidden="true">＋</span></button></div>
+</section>
+<section class="store-shelf" data-collection="accessories" hidden aria-labelledby="collection-title-accessories">
+ <div class="store-heading"><h2 id="collection-title-accessories">악세서리. <span>제품 소개 준비 중</span></h2></div>
+ 
+</section>
+  </div>
 </main>
 <footer class="end"><div class="wrap"><strong class="logo">ARME</strong><p>메인 화면 디자인 시안</p></div></footer>
 <dialog id="product-preview" aria-labelledby="preview-title">
@@ -258,7 +323,8 @@ for (const button of document.querySelectorAll('[data-model]')) {
     document.querySelector('#preview-description').textContent = description;
     currentModel = key;
     cabinColors.hidden = key !== 'cabin';
-    currentPhoto = 0;
+    currentPhoto = Math.max(0, galleries[key].indexOf(button.dataset.galleryPhoto));
+    currentPanel = 'overview';
     preview.querySelector('input[name=payment]').checked = true;
     showPanel(button.dataset.openPanel || 'overview');
     preview.showModal();
@@ -267,6 +333,47 @@ for (const button of document.querySelectorAll('[data-model]')) {
 }
 preview.querySelector('.close-preview').addEventListener('click', () => preview.close());
 preview.addEventListener('click', event => { if (event.target === preview) preview.close(); });
+
+const homeView = document.querySelector('#home-view');
+const storeView = document.querySelector('#store-view');
+const shelves = [...storeView.querySelectorAll('[data-collection]')];
+const menuLinks = [...document.querySelectorAll('a[href^="#collection-"]')];
+function updateStoreView() {
+  const route = location.hash.slice(1);
+  const selected = shelves.find(shelf => route === 'collection-' + shelf.dataset.collection);
+  homeView.hidden = Boolean(selected);
+  storeView.hidden = !selected;
+  for (const shelf of shelves) shelf.hidden = shelf !== selected;
+  for (const link of menuLinks) {
+    if (link.hash === location.hash) link.setAttribute('aria-current', 'page');
+    else link.removeAttribute('aria-current');
+  }
+  window.scrollTo({top:0,behavior:'instant'});
+  if (selected) selected.dispatchEvent(new Event('collection-open'));
+}
+for (const shelf of shelves) {
+  const rail = shelf.querySelector('.store-rail');
+  if (!rail) continue;
+  const [previous, next] = shelf.querySelectorAll('[data-scroll]');
+  function syncArrows() {
+    previous.disabled = rail.scrollLeft < 2;
+    next.disabled = rail.scrollLeft + rail.clientWidth >= rail.scrollWidth - 2;
+  }
+  for (const button of [previous, next]) {
+    button.addEventListener('click', () => {
+      const card = rail.querySelector('.store-card');
+      const gap = parseFloat(getComputedStyle(rail).columnGap);
+      const step = card.offsetWidth + gap;
+      const behavior = matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth';
+      rail.scrollBy({left: step * Number(button.dataset.scroll), behavior});
+    });
+  }
+  rail.addEventListener('scroll', syncArrows, {passive:true});
+  shelf.addEventListener('collection-open', syncArrows);
+  window.addEventListener('resize', syncArrows);
+}
+window.addEventListener('hashchange', updateStoreView);
+updateStoreView();
 </script>
 </body>
 </html>
