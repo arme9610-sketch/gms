@@ -8,7 +8,7 @@
 <style>
 :root{font-family:Arial,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;color:#1b1b19;background:#fff;scroll-behavior:smooth}
 *{box-sizing:border-box}body{margin:0}a{color:inherit;text-decoration:none}a:focus-visible{outline:2px solid #4561ad;outline-offset:5px}
-.wrap{width:min(1192px,calc(100% - 56px));margin:auto}.nav{border-bottom:1px solid #ecece9}.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:62px;gap:18px}.logo{font-weight:900;letter-spacing:.15em;font-size:22px}.links{display:flex;gap:24px;font-size:13px}.label{font-size:11px;font-weight:700;letter-spacing:.18em}.intro{padding:57px 0 25px;display:flex;justify-content:space-between;align-items:end;gap:20px}.intro h1{font-size:clamp(47px,8vw,104px);line-height:.92;letter-spacing:-.08em;margin:0}.intro p{font-size:15px;color:#555650;margin:0 0 3px;text-align:right}
+.wrap{width:min(1192px,calc(100% - 56px));margin:auto}.nav{border-bottom:1px solid #ecece9}.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:62px;gap:18px}.logo{font-weight:900;letter-spacing:0;font-size:22px}.links{display:flex;gap:24px;font-size:13px}.label{font-size:11px;font-weight:700;letter-spacing:.18em}.intro{padding:57px 0 25px;display:flex;justify-content:space-between;align-items:end;gap:20px}.intro h1{font-size:clamp(47px,8vw,104px);line-height:.92;letter-spacing:-.08em;margin:0}.intro p{font-size:15px;color:#555650;margin:0 0 3px;text-align:right}
 .hero{display:grid;grid-template-columns:1fr 1.03fr;background:#edede8;border-radius:24px;overflow:hidden;min-height:470px}.hero-copy{padding:clamp(27px,5vw,72px);align-self:center}.hero h2{font-size:clamp(43px,6.6vw,96px);letter-spacing:-.075em;line-height:.87;margin:20px 0}.hero p{font-size:18px;line-height:1.55;margin:0 0 24px}.hero img{width:100%;height:100%;object-fit:cover;display:block;aspect-ratio:1.15}.actions{display:flex;align-items:center;flex-wrap:wrap;gap:15px;font-size:13px}.pill{display:inline-flex;align-items:center;min-height:44px;padding:0 17px;background:#20211f;color:#fff;border-radius:30px}.quiet:hover{text-decoration:underline}
 .lineup{padding:90px 0 75px}.section-head{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:27px}.section-head h2{font-size:clamp(32px,5vw,60px);margin:8px 0 0;letter-spacing:-.07em}.section-head a{font-size:13px;flex-shrink:0}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{border:1px solid #eaeae6;border-radius:18px;overflow:hidden}.card img{width:100%;aspect-ratio:1.14;object-fit:cover;display:block;background:#eeeee9}.card-copy{padding:24px}.card h3{font-size:clamp(23px,2.7vw,37px);letter-spacing:-.06em;margin:0 0 10px}.card p{font-size:14px;line-height:1.55;margin:0 0 18px;color:#555650}
 .end{background:#1d1e1c;color:#fff;padding:49px 0}.end .wrap{display:flex;justify-content:space-between;align-items:center;gap:18px}.end p{margin:0;font-size:12px;color:#d7d7d1}.end a{font-size:13px}
@@ -190,12 +190,20 @@ dialog{width:min(920px,calc(100% - 24px));max-height:calc(100dvh - 32px);padding
 .essential-swatches input:checked+span,.essential-swatches input:focus-visible+span{outline:2px solid #0066cc;outline-offset:3px}
 .essential-colors output{display:block;font-size:13px;margin:4px 0 0 4px}
 #essential-selection{font-weight:700}
+.essential-card-open img[src*="essential-silver-"]{object-fit:contain;object-position:center;padding:8px 24px}
+.site-menu .logo{gap:4px}
+.site-menu .logo img{object-fit:contain;mix-blend-mode:multiply}
+.essential-card-open[data-size="20"] img[src*="essential-silver-"]{height:48%}
+.essential-card-open[data-size="24"] img[src*="essential-silver-"]{height:53%}
+
+::view-transition-old(root),::view-transition-new(root){animation-duration:330ms;animation-timing-function:cubic-bezier(.2,.7,.25,1)}
+::view-transition-group(product-photo){animation-duration:480ms;animation-timing-function:cubic-bezier(.2,.75,.25,1)}
 </style>
 </head>
 <body id="home">
 <header class="nav">
   <nav class="site-menu wrap" aria-label="주 메뉴">
-    <a class="logo" href="#home" aria-label="ARME 홈">ARME</a>
+    <a class="logo" href="#home" aria-label="ARME 홈"><img src="assets/arme-symbol.jpg" width="20" height="20" alt="">ARME</a>
     <a href="#collection-essential">Essential</a>
     <a href="#collection-cabin">Cabin</a>
     <a href="#collection-metron">Metron</a>
@@ -204,15 +212,16 @@ dialog{width:min(920px,calc(100% - 24px));max-height:calc(100dvh - 32px);padding
 </header>
 <main id="home-view">
 <div class="product-banners" id="lineup">
-<section id="cabin" class="product-banner banner-cabin" aria-labelledby="banner-cabin">
+<section id="essential" class="product-banner banner-essential" aria-labelledby="banner-essential">
   <div class="banner-art">
-    <img class="cabin-cutout" src="assets/cabin-bathory-front.webp" alt="BathoryRed 메트론 카빈 정면" fetchpriority="high">
+    <img src="assets/una05142.webp" alt="에센셜 캐리어 두 사이즈" fetchpriority="high">
+    
   </div>
   <div class="banner-copy">
-    <h1 id="banner-cabin">CABIN</h1>
+    <h1 id="banner-essential">ESSENTIAL</h1>
     <div class="cabin-actions">
-      <button class="banner-open" type="button" data-model="cabin" aria-label="CABIN 더 알아보기"><span>더 알아보기</span></button>
-      <button class="cabin-buy" type="button" data-model="cabin" data-open-panel="payment">구매하기</button>
+      <button class="banner-open" type="button" data-model="essential" aria-label="ESSENTIAL 더 알아보기"><span>더 알아보기</span></button>
+      <button class="cabin-buy" type="button" data-model="essential" data-open-panel="payment">구매하기</button>
     </div>
   </div>
 </section>
@@ -229,16 +238,15 @@ dialog{width:min(920px,calc(100% - 24px));max-height:calc(100dvh - 32px);padding
     </div>
   </div>
 </section>
-<section id="essential" class="product-banner banner-essential" aria-labelledby="banner-essential">
+<section id="cabin" class="product-banner banner-cabin" aria-labelledby="banner-cabin">
   <div class="banner-art">
-    <img src="assets/una05142.webp" alt="에센셜 캐리어 두 사이즈" loading="lazy">
-    
+    <img class="cabin-cutout" src="assets/cabin-bathory-front.webp" alt="BathoryRed 메트론 카빈 정면" loading="lazy">
   </div>
   <div class="banner-copy">
-    <h2 id="banner-essential">ESSENTIAL</h2>
+    <h2 id="banner-cabin">CABIN</h2>
     <div class="cabin-actions">
-      <button class="banner-open" type="button" data-model="essential" aria-label="ESSENTIAL 더 알아보기"><span>더 알아보기</span></button>
-      <button class="cabin-buy" type="button" data-model="essential" data-open-panel="payment">구매하기</button>
+      <button class="banner-open" type="button" data-model="cabin" aria-label="CABIN 더 알아보기"><span>더 알아보기</span></button>
+      <button class="cabin-buy" type="button" data-model="cabin" data-open-panel="payment">구매하기</button>
     </div>
   </div>
 </section>
@@ -256,18 +264,18 @@ dialog{width:min(920px,calc(100% - 24px));max-height:calc(100dvh - 32px);padding
 <a href="#collection-metron"><img src="assets/metron-5814.webp" alt="" loading="lazy"><strong>Metron</strong></a>
 <a href="#collection-accessories"><span aria-hidden="true">＋</span><strong>악세서리</strong></a></nav>
     <section class="store-shelf" data-collection="essential" hidden aria-labelledby="collection-title-essential">
- <div class="store-heading"><h2 id="collection-title-essential">Essential. <span>라인업 살펴보기.</span></h2><div class="store-controls"><button type="button" data-scroll="-1" aria-label="이전 제품 카드">‹</button><button type="button" data-scroll="1" aria-label="다음 제품 카드">›</button></div></div>
+ <div class="store-heading"><h2 id="collection-title-essential">Essential</h2><div class="store-controls"><button type="button" data-scroll="-1" aria-label="이전 제품 카드">‹</button><button type="button" data-scroll="1" aria-label="다음 제품 카드">›</button></div></div>
  <div class="store-rail" aria-label="Essential 제품 카드"><article class="store-card essential-card">
- <button class="essential-card-open" type="button" data-model="essential" data-size="20" data-gallery-photo="una05142" aria-label="에센셜 20인치 더 알아보기"><span class="store-card-copy"><small>ESSENTIAL</small><strong>20인치</strong></span><img src="assets/una05142.webp" alt="에센셜 라인업 대표 이미지" loading="lazy"><span class="store-card-plus" aria-hidden="true">＋</span></button>
- <fieldset class="essential-colors"><legend>20인치 색상</legend><div class="essential-swatches"><label title="CreamWhite"><input type="radio" name="essential-color-20" value="cream-white" data-label="CreamWhite" aria-label="CreamWhite" checked><span style="--swatch:#f0ede2" aria-hidden="true"></span></label><label title="TripleBlack"><input type="radio" name="essential-color-20" value="triple-black" data-label="TripleBlack" aria-label="TripleBlack" ><span style="--swatch:#202021" aria-hidden="true"></span></label><label title="SpaceSilver"><input type="radio" name="essential-color-20" value="space-silver" data-label="SpaceSilver" aria-label="SpaceSilver" ><span style="--swatch:#b6bcc6" aria-hidden="true"></span></label><label title="DarkGray"><input type="radio" name="essential-color-20" value="dark-gray" data-label="DarkGray" aria-label="DarkGray" ><span style="--swatch:#575859" aria-hidden="true"></span></label></div><output aria-live="polite">CreamWhite</output></fieldset>
+ <button class="essential-card-open" type="button" data-model="essential" data-size="20" data-gallery-photo="essential-silver-20" aria-label="에센셜 20인치 더 알아보기"><span class="store-card-copy"><small>ESSENTIAL</small><strong>20인치</strong></span><img src="assets/essential-silver-20.webp" alt="에센셜 20인치 SpaceSilver 대표 컷" loading="lazy"><span class="store-card-plus" aria-hidden="true">＋</span></button>
+ <fieldset class="essential-colors"><legend>20인치 색상</legend><div class="essential-swatches"><label title="CreamWhite"><input type="radio" name="essential-color-20" value="cream-white" data-label="CreamWhite" aria-label="CreamWhite"><span style="--swatch:#f0ede2" aria-hidden="true"></span></label><label title="TripleBlack"><input type="radio" name="essential-color-20" value="triple-black" data-label="TripleBlack" aria-label="TripleBlack" ><span style="--swatch:#202021" aria-hidden="true"></span></label><label title="SpaceSilver"><input type="radio" name="essential-color-20" value="space-silver" data-label="SpaceSilver" aria-label="SpaceSilver"  checked><span style="--swatch:#b6bcc6" aria-hidden="true"></span></label><label title="DarkGray"><input type="radio" name="essential-color-20" value="dark-gray" data-label="DarkGray" aria-label="DarkGray" ><span style="--swatch:#575859" aria-hidden="true"></span></label></div><output aria-live="polite">SpaceSilver</output></fieldset>
 </article>
 <article class="store-card essential-card">
- <button class="essential-card-open" type="button" data-model="essential" data-size="24" data-gallery-photo="una05142" aria-label="에센셜 24인치 더 알아보기"><span class="store-card-copy"><small>ESSENTIAL</small><strong>24인치</strong></span><img src="assets/una05142.webp" alt="에센셜 라인업 대표 이미지" loading="lazy"><span class="store-card-plus" aria-hidden="true">＋</span></button>
- <fieldset class="essential-colors"><legend>24인치 색상</legend><div class="essential-swatches"><label title="CreamWhite"><input type="radio" name="essential-color-24" value="cream-white" data-label="CreamWhite" aria-label="CreamWhite" checked><span style="--swatch:#f0ede2" aria-hidden="true"></span></label><label title="TripleBlack"><input type="radio" name="essential-color-24" value="triple-black" data-label="TripleBlack" aria-label="TripleBlack" ><span style="--swatch:#202021" aria-hidden="true"></span></label><label title="SpaceSilver"><input type="radio" name="essential-color-24" value="space-silver" data-label="SpaceSilver" aria-label="SpaceSilver" ><span style="--swatch:#b6bcc6" aria-hidden="true"></span></label><label title="DarkGray"><input type="radio" name="essential-color-24" value="dark-gray" data-label="DarkGray" aria-label="DarkGray" ><span style="--swatch:#575859" aria-hidden="true"></span></label></div><output aria-live="polite">CreamWhite</output></fieldset>
+ <button class="essential-card-open" type="button" data-model="essential" data-size="24" data-gallery-photo="essential-silver-24" aria-label="에센셜 24인치 더 알아보기"><span class="store-card-copy"><small>ESSENTIAL</small><strong>24인치</strong></span><img src="assets/essential-silver-24.webp" alt="에센셜 24인치 SpaceSilver 대표 컷" loading="lazy"><span class="store-card-plus" aria-hidden="true">＋</span></button>
+ <fieldset class="essential-colors"><legend>24인치 색상</legend><div class="essential-swatches"><label title="CreamWhite"><input type="radio" name="essential-color-24" value="cream-white" data-label="CreamWhite" aria-label="CreamWhite"><span style="--swatch:#f0ede2" aria-hidden="true"></span></label><label title="TripleBlack"><input type="radio" name="essential-color-24" value="triple-black" data-label="TripleBlack" aria-label="TripleBlack" ><span style="--swatch:#202021" aria-hidden="true"></span></label><label title="SpaceSilver"><input type="radio" name="essential-color-24" value="space-silver" data-label="SpaceSilver" aria-label="SpaceSilver"  checked><span style="--swatch:#b6bcc6" aria-hidden="true"></span></label><label title="DarkGray"><input type="radio" name="essential-color-24" value="dark-gray" data-label="DarkGray" aria-label="DarkGray" ><span style="--swatch:#575859" aria-hidden="true"></span></label></div><output aria-live="polite">SpaceSilver</output></fieldset>
 </article>
 <article class="store-card essential-card">
- <button class="essential-card-open" type="button" data-model="essential" data-size="28" data-gallery-photo="una05142" aria-label="에센셜 28인치 더 알아보기"><span class="store-card-copy"><small>ESSENTIAL</small><strong>28인치</strong></span><img src="assets/una05142.webp" alt="에센셜 라인업 대표 이미지" loading="lazy"><span class="store-card-plus" aria-hidden="true">＋</span></button>
- <fieldset class="essential-colors"><legend>28인치 색상</legend><div class="essential-swatches"><label title="CreamWhite"><input type="radio" name="essential-color-28" value="cream-white" data-label="CreamWhite" aria-label="CreamWhite" checked><span style="--swatch:#f0ede2" aria-hidden="true"></span></label><label title="TripleBlack"><input type="radio" name="essential-color-28" value="triple-black" data-label="TripleBlack" aria-label="TripleBlack" ><span style="--swatch:#202021" aria-hidden="true"></span></label><label title="SpaceSilver"><input type="radio" name="essential-color-28" value="space-silver" data-label="SpaceSilver" aria-label="SpaceSilver" ><span style="--swatch:#b6bcc6" aria-hidden="true"></span></label><label title="DarkGray"><input type="radio" name="essential-color-28" value="dark-gray" data-label="DarkGray" aria-label="DarkGray" ><span style="--swatch:#575859" aria-hidden="true"></span></label></div><output aria-live="polite">CreamWhite</output></fieldset>
+ <button class="essential-card-open" type="button" data-model="essential" data-size="28" data-gallery-photo="essential-silver-28" aria-label="에센셜 28인치 더 알아보기"><span class="store-card-copy"><small>ESSENTIAL</small><strong>28인치</strong></span><img src="assets/essential-silver-28.webp" alt="에센셜 28인치 SpaceSilver 대표 컷" loading="lazy"><span class="store-card-plus" aria-hidden="true">＋</span></button>
+ <fieldset class="essential-colors"><legend>28인치 색상</legend><div class="essential-swatches"><label title="CreamWhite"><input type="radio" name="essential-color-28" value="cream-white" data-label="CreamWhite" aria-label="CreamWhite"><span style="--swatch:#f0ede2" aria-hidden="true"></span></label><label title="TripleBlack"><input type="radio" name="essential-color-28" value="triple-black" data-label="TripleBlack" aria-label="TripleBlack" ><span style="--swatch:#202021" aria-hidden="true"></span></label><label title="SpaceSilver"><input type="radio" name="essential-color-28" value="space-silver" data-label="SpaceSilver" aria-label="SpaceSilver"  checked><span style="--swatch:#b6bcc6" aria-hidden="true"></span></label><label title="DarkGray"><input type="radio" name="essential-color-28" value="dark-gray" data-label="DarkGray" aria-label="DarkGray" ><span style="--swatch:#575859" aria-hidden="true"></span></label></div><output aria-live="polite">SpaceSilver</output></fieldset>
 </article></div>
 </section>
 <section class="store-shelf" data-collection="cabin" hidden aria-labelledby="collection-title-cabin">
@@ -315,7 +323,7 @@ const modelDetails = {
   essential: ['ESSENTIAL', '20·24·28인치로 구성된 에센셜 라인업.']
 };
 const previewImage = document.querySelector('#preview-image');
-const galleries = {"metron":["metron-5814","metron-5798","metron-5770","metron-5791","metron-5771","metron-5792","metron-5767","metron-5793","metron-5769","metron-5795","metron-5764","metron-5790","metron-5810","metron-5818"],"cabin":["cabin-red-blue","cabin-light-duo","cabin-dark-duo","cabin-silver","cabin-black","cabin-red","cabin-front","una08738","una08698","una08692","cabin-open","una05368","una05365","una05287","una05355","una05317","cabin-lock","cabin-lining"],"essential":["una05142","essential-black-lineup","una05159","una05176","una05250","una05267","una05273","una05395"]};
+const galleries = {"metron":["metron-5814","metron-5798","metron-5770","metron-5791","metron-5771","metron-5792","metron-5767","metron-5793","metron-5769","metron-5795","metron-5764","metron-5790","metron-5810","metron-5818"],"cabin":["cabin-red-blue","cabin-light-duo","cabin-dark-duo","cabin-silver","cabin-black","cabin-red","cabin-front","una08738","una08698","una08692","cabin-open","una05368","una05365","una05287","una05355","una05317","cabin-lock","cabin-lining"],"essential":["una05142","essential-silver-20","essential-silver-24","essential-silver-28","essential-black-lineup","una05159","una05176","una05250","una05267","una05273","una05395"]};
 const galleryLabels = {"metron":"메트론","cabin":"메트론 카빈","essential":"에센셜"};
 let currentModel = 'cabin';
 let currentPhoto = 0;
@@ -369,6 +377,7 @@ function showPanel(panel) {
 for (const button of tabs) {
   button.addEventListener('click', () => showPanel(button.dataset.panel));
 }
+let transitionPhoto = null;
 for (const button of document.querySelectorAll('[data-model]')) {
   button.addEventListener('click', () => {
     const {model, galleryPhoto, openPanel} = button.dataset;
@@ -376,6 +385,8 @@ for (const button of document.querySelectorAll('[data-model]')) {
     const color = size ? button.closest('.essential-card').querySelector('input:checked').value : '';
     const photo = color === 'triple-black' ? 'essential-black-lineup' : galleryPhoto || (model === 'cabin' ? 'cabin-red' : '');
     const route = ['product-' + model, photo, openPanel || '', size || '', color].join('/');
+    if (location.hash === '#' + route) return;
+    transitionPhoto = button.closest('.store-card') ? button.querySelector('img') : null;
     location.hash = route;
   });
 }
@@ -384,9 +395,16 @@ for (const swatches of document.querySelectorAll('.essential-colors')) {
   swatches.addEventListener('change', event => {
     swatches.querySelector('output').textContent = event.target.dataset.label;
     const image = swatches.closest('.essential-card').querySelector('img');
-    const isBlack = event.target.value === 'triple-black';
-    image.src = isBlack ? 'assets/essential-black-lineup.webp' : 'assets/una05142.webp';
-    image.alt = isBlack ? '에센셜 TripleBlack 라인업 대표 이미지' : '에센셜 라인업 대표 이미지';
+    const card = swatches.closest('.essential-card');
+    const opener = card.querySelector('.essential-card-open');
+    const {size} = opener.dataset;
+    const color = event.target.value;
+    const photo = color === 'space-silver' ? 'essential-silver-' + size
+      : color === 'triple-black' ? 'essential-black-lineup' : 'una05142';
+    opener.dataset.galleryPhoto = photo;
+    image.src = 'assets/' + photo + '.webp';
+    image.alt = color === 'space-silver' ? '에센셜 ' + size + '인치 SpaceSilver 대표 컷'
+      : color === 'triple-black' ? '에센셜 TripleBlack 라인업 대표 이미지' : '에센셜 라인업 대표 이미지';
   });
 }
 function openProduct(key, photo, panel, size, color) {
@@ -453,7 +471,33 @@ for (const shelf of shelves) {
   shelf.addEventListener('collection-open', syncArrows);
   window.addEventListener('resize', syncArrows);
 }
-window.addEventListener('hashchange', updateStoreView);
+window.addEventListener('hashchange', () => {
+  const sourcePhoto = transitionPhoto;
+  transitionPhoto = null;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    updateStoreView();
+    return;
+  }
+  if (!document.startViewTransition) {
+    updateStoreView();
+    const activeView = [preview, storeView, homeView].find(view => !view.hidden);
+    activeView.animate([{opacity:0, transform:'translateY(8px)'},{opacity:1, transform:'none'}],
+      {duration:280, easing:'cubic-bezier(.2,.7,.25,1)'});
+    return;
+  }
+  if (sourcePhoto) sourcePhoto.style.viewTransitionName = 'product-photo';
+  const animation = document.startViewTransition(() => {
+    if (sourcePhoto) {
+      sourcePhoto.style.viewTransitionName = '';
+      previewImage.style.viewTransitionName = 'product-photo';
+    }
+    updateStoreView();
+  });
+  animation.finished.finally(() => {
+    if (sourcePhoto) sourcePhoto.style.viewTransitionName = '';
+    previewImage.style.viewTransitionName = '';
+  }).catch(() => {});
+});
 updateStoreView();
 </script>
 </body>
