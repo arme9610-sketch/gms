@@ -148,6 +148,35 @@ dialog{width:min(920px,calc(100% - 24px));max-height:calc(100dvh - 32px);padding
 @media(hover:hover){.store-card:hover img{transform:scale(1.045)}}
 @media(max-width:580px){.store-categories{padding-bottom:38px}.store-rail{grid-auto-columns:min(79vw,340px)}.store-card{height:370px}}
 @media(prefers-reduced-motion:reduce){.store-card img{transition:none}}
+
+#product-preview{background:#fff;color:#1d1d1f}
+#product-preview .modal-top{position:static;padding:15px clamp(18px,3vw,46px)}
+#preview-title{font-size:22px;letter-spacing:-.03em}
+#detail-back{font-size:14px;color:#0066cc}
+#detail-back:hover{text-decoration:underline}
+#product-preview .modal-body{
+  width:min(1760px,100%);margin:auto;grid-template-columns:minmax(0,1fr) minmax(270px,340px);
+  gap:clamp(22px,4vw,64px);align-items:start;padding:clamp(18px,3.8vw,55px) clamp(16px,2.5vw,44px) 64px
+}
+#product-preview .gallery{position:relative;background:#f5f5f7;border-radius:20px;overflow:hidden}
+#product-preview .gallery img{
+  width:100%;height:clamp(420px,57vw,760px);aspect-ratio:auto;object-fit:contain;
+  padding:clamp(25px,5vw,76px);background:transparent;border-radius:0
+}
+#product-preview .gallery-controls{position:absolute;inset:0;margin:0;pointer-events:none}
+#product-preview .gallery-controls button{position:absolute;top:50%;transform:translateY(-50%);pointer-events:auto;background:#e2e2e7}
+#product-preview .gallery-controls button:first-child{left:14px}
+#product-preview .gallery-controls button:last-child{right:14px}
+#product-preview .photo-count{position:absolute;bottom:17px;background:#ffffffe6;border-radius:24px;padding:4px 10px}
+#product-preview .model-picker h2{font-size:21px;line-height:1.35;letter-spacing:-.035em;margin:0 0 16px}
+.model-picker h2 span{color:#6e6e73}
+.model-picker button{display:grid;gap:5px;text-align:left;width:100%;margin:0 0 10px;padding:13px 15px;border:1px solid #888;border-radius:12px;background:#fff;color:#1d1d1f;cursor:pointer}
+.model-picker button[aria-pressed=true]{border-color:#0066cc;box-shadow:inset 0 0 0 1px #0066cc}
+.model-picker button span{font-size:12px;color:#555}
+@media(max-width:760px){
+  #product-preview .modal-body{grid-template-columns:1fr}
+  #product-preview .gallery img{height:clamp(290px,80vw,500px);padding:32px 44px}
+}
 </style>
 </head>
 <body id="home">
@@ -244,15 +273,19 @@ dialog{width:min(920px,calc(100% - 24px));max-height:calc(100dvh - 32px);padding
   </div>
 </main>
 <footer class="end"><div class="wrap"><strong class="logo">ARME</strong><p>메인 화면 디자인 시안</p></div></footer>
-<dialog id="product-preview" aria-labelledby="preview-title">
-<header class="modal-top"><span class="label">ARME / PRODUCT PREVIEW</span><button class="close-preview" type="button" aria-label="상세 보기 닫기" autofocus>×</button></header>
+<main id="product-preview" hidden aria-labelledby="preview-title">
+<header class="modal-top"><strong id="preview-title" tabindex="-1"></strong><a id="detail-back" href="#collection-cabin">‹ 컬렉션으로</a></header>
 <div class="modal-body"><div class="gallery"><img id="preview-image" alt=""><div class="gallery-controls"><button type="button" data-step="-1" aria-label="이전 사진">‹</button><span class="photo-count" aria-live="polite"></span><button type="button" data-step="1" aria-label="다음 사진">›</button></div></div><div>
-<span class="label">TRAVEL COLLECTION</span><h2 id="preview-title"></h2>
+<div class="model-picker" role="group" aria-label="모델 선택"><h2>모델. <span>라인업을 선택하세요.</span></h2>
+<button type="button" data-model="essential"><strong>Essential</strong><span>20 · 24 · 28인치 라인업</span></button>
+<button type="button" data-model="cabin"><strong>Cabin</strong><span>위로 열리는 가로형 캐리어</span></button>
+<button type="button" data-model="metron"><strong>Metron</strong><span>세로형 메트론 라인업</span></button>
+</div>
 <div class="tab-row" role="group" aria-label="상세 정보 보기"><button type="button" class="tab" aria-pressed="true" data-panel="overview">제품 소개</button><button type="button" class="tab" aria-pressed="false" data-panel="detail-shots">디테일컷</button><button type="button" class="tab" aria-pressed="false" data-panel="payment">결제 방식 예시</button></div>
 <div id="overview"><p id="preview-description"></p><section id="cabin-colors" hidden aria-label="메트론 카빈 컬러"><h3>컬러</h3><div class="color-list"><button class="color-chip" type="button" data-photo="cabin-silver" style="--swatch:#b6bcc6">Space Silver</button><button class="color-chip" type="button" data-photo="cabin-red" style="--swatch:#c62e3c">Bathory Red</button><button class="color-chip" type="button" data-photo="cabin-red-blue" style="--swatch:#aac7df">Clacier Blue</button><button class="color-chip" type="button" data-photo="cabin-dark-duo" style="--swatch:#575859">Dark Gray</button><button class="color-chip" type="button" data-photo="cabin-black" style="--swatch:#202021">Tripple Black</button><button class="color-chip" type="button" data-photo="una05368" style="--swatch:#f0ede2">Cream White</button><button class="color-chip" type="button" data-photo="una05365" style="--swatch:#e9bfc9">Dawn Pink</button></div></section></div>
 <div id="detail-shots" hidden><p id="detail-caption" aria-live="polite"></p><p class="sample">사진 아래 화살표로 다른 디테일을 볼 수 있어요.</p></div>
 <div id="payment" hidden><p class="sample">디자인 시안용 예시입니다. 실제 결제는 진행되지 않습니다.</p><div class="payment-options" role="group" aria-label="결제 방식 예시"><label><input type="radio" name="payment" checked>신용·체크카드</label><label><input type="radio" name="payment">간편결제</label><label><input type="radio" name="payment">계좌이체</label></div></div>
-</div></div></dialog>
+</div></div></main>
 <script>
 const preview = document.querySelector('#product-preview');
 const modelDetails = {
@@ -287,7 +320,7 @@ function showPhoto() {
   const isDetail = currentPanel === 'detail-shots';
   const [photo, caption] = isDetail ? photos[currentPhoto] : [photos[currentPhoto], ''];
   document.querySelector('#detail-caption').textContent = caption;
-  previewImage.src = 'assets/' + photo + '.webp';
+  previewImage.src = 'assets/' + (photo === 'cabin-red' ? 'cabin-bathory-front' : photo) + '.webp';
   for (const button of colorButtons) {
     button.setAttribute('aria-pressed', currentModel === 'cabin' && button.dataset.photo === photo);
   }
@@ -317,22 +350,28 @@ for (const button of tabs) {
 }
 for (const button of document.querySelectorAll('[data-model]')) {
   button.addEventListener('click', () => {
-    const key = button.dataset.model;
-    const [name, description] = modelDetails[key];
-    document.querySelector('#preview-title').textContent = name;
-    document.querySelector('#preview-description').textContent = description;
-    currentModel = key;
-    cabinColors.hidden = key !== 'cabin';
-    currentPhoto = Math.max(0, galleries[key].indexOf(button.dataset.galleryPhoto));
-    currentPanel = 'overview';
-    preview.querySelector('input[name=payment]').checked = true;
-    showPanel(button.dataset.openPanel || 'overview');
-    preview.showModal();
-    preview.scrollTop = 0;
+    const {model, galleryPhoto, openPanel} = button.dataset;
+    const photo = galleryPhoto || (model === 'cabin' ? 'cabin-red' : '');
+    const route = ['product-' + model, photo, openPanel || ''].join('/');
+    location.hash = route;
   });
 }
-preview.querySelector('.close-preview').addEventListener('click', () => preview.close());
-preview.addEventListener('click', event => { if (event.target === preview) preview.close(); });
+function openProduct(key, photo, panel) {
+  const [name, description] = modelDetails[key];
+  document.querySelector('#preview-title').textContent = name;
+  document.querySelector('#preview-description').textContent = description;
+  document.querySelector('#detail-back').href = '#collection-' + key;
+  currentModel = key;
+  cabinColors.hidden = key !== 'cabin';
+  currentPhoto = Math.max(0, galleries[key].indexOf(photo));
+  currentPanel = 'overview';
+  preview.querySelector('input[name=payment]').checked = true;
+  for (const button of preview.querySelectorAll('[data-model]')) {
+    button.setAttribute('aria-pressed', button.dataset.model === key);
+  }
+  showPanel(panel === 'payment' ? 'payment' : 'overview');
+  document.querySelector('#preview-title').focus({preventScroll:true});
+}
 
 const homeView = document.querySelector('#home-view');
 const storeView = document.querySelector('#store-view');
@@ -341,11 +380,15 @@ const menuLinks = [...document.querySelectorAll('a[href^="#collection-"]')];
 function updateStoreView() {
   const route = location.hash.slice(1);
   const selected = shelves.find(shelf => route === 'collection-' + shelf.dataset.collection);
-  homeView.hidden = Boolean(selected);
+  const [productRoute, photo, panel] = route.split('/');
+  const product = productRoute.match(/^product-(essential|cabin|metron)$/)?.[1];
+  homeView.hidden = Boolean(selected || product);
   storeView.hidden = !selected;
+  preview.hidden = !product;
+  if (product) openProduct(product, photo, panel);
   for (const shelf of shelves) shelf.hidden = shelf !== selected;
   for (const link of menuLinks) {
-    if (link.hash === location.hash) link.setAttribute('aria-current', 'page');
+    if (link.hash === location.hash || link.hash === '#collection-' + product) link.setAttribute('aria-current', 'page');
     else link.removeAttribute('aria-current');
   }
   window.scrollTo({top:0,behavior:'instant'});
