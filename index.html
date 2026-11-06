@@ -20,6 +20,7 @@
 dialog{width:min(920px,calc(100% - 24px));max-height:calc(100dvh - 32px);padding:0;border:0;border-radius:23px;color:inherit;background:#fff;overscroll-behavior:contain}dialog::backdrop{background:#17191c88;backdrop-filter:blur(8px)}dialog[open]{animation:appear .28s ease-out}body:has(dialog[open]){overflow:hidden}@keyframes appear{from{opacity:0;transform:translateY(12px) scale(.985)}to{opacity:1;transform:none}}.modal-top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:15px clamp(18px,4vw,42px);position:sticky;top:0;background:#fffffff5;z-index:1;border-bottom:1px solid #ececea}.close-preview{border-radius:50%;width:42px;height:42px;font-size:24px;background:#eee;color:#222}.modal-body{padding:clamp(19px,4vw,42px);display:grid;grid-template-columns:1.15fr 1fr;gap:26px}.modal-body img{width:100%;aspect-ratio:1.07;object-fit:cover;border-radius:15px}.modal-body h2{font-size:clamp(32px,5vw,52px);letter-spacing:-.07em;margin:10px 0}.modal-body p{line-height:1.6}.tab-row{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 14px}.tab{border-radius:22px;background:#f1f1f1;padding:10px 14px}.tab[aria-pressed=true]{background:#20211f;color:white}.payment-options{display:grid;gap:7px}.payment-options label{display:flex;gap:8px;align-items:center;padding:12px;border:1px solid #dedede;border-radius:10px}.payment-options label:has(input:checked){border-color:#20211f;background:#f5f5f5}.sample{font-size:12px;color:#565656}@media(max-width:650px){.modal-body{grid-template-columns:1fr}.modal-body img{aspect-ratio:1.4}}@media(prefers-reduced-motion:reduce){*,dialog[open]{transition:none!important;animation:none!important}}
 .photo-button{position:relative}.photo-button .alternate{position:absolute;inset:0;height:100%;opacity:0;transition:opacity .28s ease,transform .45s cubic-bezier(.2,.65,.25,1)}.photo-button:focus-visible .alternate{opacity:1}@media(hover:hover){.photo-button:hover .alternate{opacity:1}}.gallery{min-width:0}.gallery img{aspect-ratio:4/5;object-fit:contain;background:#f3f3f5;display:block}.gallery-controls{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:12px}.gallery-controls button{width:44px;height:44px;border:0;border-radius:50%;background:#eee;color:#222;cursor:pointer;font-size:20px}.gallery-controls button:hover{background:#ddd}.photo-count{font-size:13px;font-variant-numeric:tabular-nums}.hero img{object-position:center 63%}
 .photo-button[data-model="cabin"] img{object-position:center 68%}
+.color-list{display:flex;flex-wrap:wrap;gap:8px}.color-chip{display:inline-flex;align-items:center;gap:7px;padding:8px 10px;border:1px solid #ddd;border-radius:18px;background:#fff;color:#222;font:inherit;font-size:12px}.color-chip::before{content:"";width:11px;height:11px;border-radius:50%;background:var(--swatch);border:1px solid #0002}.color-chip:is(button){cursor:pointer}.color-chip:is(button):hover,.color-chip[aria-pressed=true]{border-color:#222}
 </style>
 </head>
 <body>
@@ -50,7 +51,7 @@ dialog{width:min(920px,calc(100% - 24px));max-height:calc(100dvh - 32px);padding
 <div class="modal-body"><div class="gallery"><img id="preview-image" alt=""><div class="gallery-controls"><button type="button" data-step="-1" aria-label="이전 사진">‹</button><span class="photo-count" aria-live="polite"></span><button type="button" data-step="1" aria-label="다음 사진">›</button></div></div><div>
 <span class="label">TRAVEL COLLECTION</span><h2 id="preview-title"></h2>
 <div class="tab-row" role="group" aria-label="상세 정보 보기"><button type="button" class="tab" aria-pressed="true" data-panel="overview">제품 소개</button><button type="button" class="tab" aria-pressed="false" data-panel="payment">결제 방식 예시</button></div>
-<div id="overview"><p id="preview-description"></p></div>
+<div id="overview"><p id="preview-description"></p><section id="cabin-colors" hidden aria-label="메트론 카빈 컬러"><h3>컬러</h3><div class="color-list"><button class="color-chip" type="button" data-photo="cabin-silver" style="--swatch:#b6bcc6">Space Silver</button><button class="color-chip" type="button" data-photo="cabin-red" style="--swatch:#c62e3c">Bathory Red</button><span class="color-chip" style="--swatch:#aac7df">Clacier Blue</span><button class="color-chip" type="button" data-photo="cabin-dark-duo" style="--swatch:#575859">Dark Gray</button><button class="color-chip" type="button" data-photo="cabin-black" style="--swatch:#202021">Tripple Black</button><button class="color-chip" type="button" data-photo="una05368" style="--swatch:#f0ede2">Cream White</button><button class="color-chip" type="button" data-photo="una05365" style="--swatch:#e9bfc9">Dawn Pink</button></div><p class="sample">Clacier Blue 사진 준비 중</p></section></div>
 <div id="payment" hidden><p class="sample">디자인 시안용 예시입니다. 실제 결제는 진행되지 않습니다.</p><div class="payment-options" role="group" aria-label="결제 방식 예시"><label><input type="radio" name="payment" checked>신용·체크카드</label><label><input type="radio" name="payment">간편결제</label><label><input type="radio" name="payment">계좌이체</label></div></div>
 </div></div></dialog>
 <script>
@@ -65,9 +66,21 @@ const galleries = {"metron":["metron-5814","metron-5798","metron-5770","metron-5
 const galleryLabels = {"metron":"메트론","cabin":"메트론 카빈","essential":"에센셜"};
 let currentModel = 'cabin';
 let currentPhoto = 0;
+const cabinColors = document.querySelector('#cabin-colors');
+const colorButtons = cabinColors.querySelectorAll('[data-photo]');
+for (const button of colorButtons) {
+  button.addEventListener('click', () => {
+    currentPhoto = galleries.cabin.indexOf(button.dataset.photo);
+    showPhoto();
+  });
+}
 function showPhoto() {
   const photos = galleries[currentModel];
-  previewImage.src = 'assets/' + photos[currentPhoto] + '.webp';
+  const photo = photos[currentPhoto];
+  previewImage.src = 'assets/' + photo + '.webp';
+  for (const button of colorButtons) {
+    button.setAttribute('aria-pressed', currentModel === 'cabin' && button.dataset.photo === photo);
+  }
   previewImage.alt = galleryLabels[currentModel] + ' 촬영 컷 ' + (currentPhoto + 1);
   preview.querySelector('.photo-count').textContent = (currentPhoto + 1) + ' / ' + photos.length;
 }
@@ -96,6 +109,7 @@ for (const button of document.querySelectorAll('[data-model]')) {
     document.querySelector('#preview-title').textContent = name;
     document.querySelector('#preview-description').textContent = description;
     currentModel = key;
+    cabinColors.hidden = key !== 'cabin';
     currentPhoto = 0;
     showPhoto();
     preview.querySelector('input[name=payment]').checked = true;
