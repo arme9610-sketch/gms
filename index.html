@@ -72,6 +72,12 @@ dialog{width:min(920px,calc(100% - 24px));max-height:calc(100dvh - 32px);padding
 }
 @media(hover:hover){.banner-metron:hover .banner-art::before{background-image:linear-gradient(#f5f5f5c9,#f5f5f52b),var(--hover-edge-photo)}}
 @media(max-width:720px){.banner-metron .banner-art img,.banner-essential .banner-art img{max-height:calc(100% - 145px)}}
+
+.cabin-actions{display:flex;justify-content:center;align-items:center;gap:12px;margin-top:20px}
+.banner-cabin .banner-open span,.cabin-buy{border:1px solid #0071e3;border-radius:30px;padding:0 19px;min-height:44px;font:inherit;font-size:14px}
+.banner-cabin .banner-open span{background:#0071e3;color:white}
+.cabin-buy{position:relative;z-index:3;background:transparent;color:white;border-color:#fff;cursor:pointer}
+.cabin-buy:hover{background:white;color:#181818}
 </style>
 </head>
 <body id="home">
@@ -92,9 +98,11 @@ dialog{width:min(920px,calc(100% - 24px));max-height:calc(100dvh - 32px);padding
     <img class="banner-alternate" src="assets/cabin-light-duo.webp" alt="" loading="lazy">
   </div>
   <div class="banner-copy">
-    <h1 id="banner-cabin">METRON CABIN</h1>
-    <p>바토리 레드와 글레이셔 블루.</p>
-    <button class="banner-open" type="button" data-model="cabin" aria-label="METRON CABIN 자세히 보기"><span>자세히 보기</span></button>
+    <h1 id="banner-cabin">CABIN</h1>
+    <div class="cabin-actions">
+      <button class="banner-open" type="button" data-model="cabin" aria-label="CABIN 더 알아보기"><span>더 알아보기</span></button>
+      <button class="cabin-buy" type="button" data-model="cabin" data-open-panel="payment">구매하기</button>
+    </div>
   </div>
 </section>
 <section id="metron" class="product-banner banner-metron" aria-labelledby="banner-metron">
@@ -202,7 +210,7 @@ for (const button of document.querySelectorAll('[data-model]')) {
     currentPhoto = 0;
     showPhoto();
     preview.querySelector('input[name=payment]').checked = true;
-    showPanel('overview');
+    showPanel(button.dataset.openPanel || 'overview');
     preview.showModal();
     preview.scrollTop = 0;
   });
