@@ -74,8 +74,8 @@ dialog{width:min(920px,calc(100% - 24px));max-height:calc(100dvh - 32px);padding
 @media(max-width:720px){.banner-metron .banner-art img,.banner-essential .banner-art img{max-height:calc(100% - 145px)}}
 
 .cabin-actions{display:flex;justify-content:center;align-items:center;gap:12px;margin-top:20px}
-.banner-cabin .banner-open span,.cabin-buy{border:1px solid #0071e3;border-radius:30px;padding:0 19px;min-height:44px;font:inherit;font-size:14px}
-.banner-cabin .banner-open span{background:#0071e3;color:white}
+.cabin-actions .banner-open span,.cabin-buy{border:1px solid #0071e3;border-radius:30px;padding:0 19px;min-height:44px;font:inherit;font-size:14px}
+.cabin-actions .banner-open span{background:#0071e3;color:white}
 .cabin-buy{position:relative;z-index:3;background:transparent;color:white;border-color:#fff;cursor:pointer}
 .cabin-buy:hover{background:white;color:#181818}
 
@@ -99,6 +99,8 @@ dialog{width:min(920px,calc(100% - 24px));max-height:calc(100dvh - 32px);padding
 }
 @media(max-width:720px){.banner-cabin .banner-art .cabin-film{object-position:center 60%}}
 @media(prefers-reduced-motion:reduce){.banner-cabin .banner-art .cabin-film,.banner-cabin .banner-art::before{animation:none}}
+.banner-metron .cabin-buy,.banner-essential .cabin-buy{border-color:#0071e3;color:#0066cc}
+.banner-metron .cabin-buy:hover,.banner-essential .cabin-buy:hover{background:#0071e3;color:white}
 </style>
 </head>
 <body id="home">
@@ -132,8 +134,10 @@ dialog{width:min(920px,calc(100% - 24px));max-height:calc(100dvh - 32px);padding
   </div>
   <div class="banner-copy">
     <h2 id="banner-metron">METRON</h2>
-    <p>글레이셔 블루 · 바토리 레드</p>
-    <button class="banner-open" type="button" data-model="metron" aria-label="METRON 자세히 보기"><span>자세히 보기</span></button>
+    <div class="cabin-actions">
+      <button class="banner-open" type="button" data-model="metron" aria-label="METRON 더 알아보기"><span>더 알아보기</span></button>
+      <button class="cabin-buy" type="button" data-model="metron" data-open-panel="payment">구매하기</button>
+    </div>
   </div>
 </section>
 <section id="essential" class="product-banner banner-essential" aria-labelledby="banner-essential">
@@ -143,8 +147,10 @@ dialog{width:min(920px,calc(100% - 24px));max-height:calc(100dvh - 32px);padding
   </div>
   <div class="banner-copy">
     <h2 id="banner-essential">ESSENTIAL</h2>
-    <p>20 · 24 · 28인치 라인업</p>
-    <button class="banner-open" type="button" data-model="essential" aria-label="ESSENTIAL 자세히 보기"><span>자세히 보기</span></button>
+    <div class="cabin-actions">
+      <button class="banner-open" type="button" data-model="essential" aria-label="ESSENTIAL 더 알아보기"><span>더 알아보기</span></button>
+      <button class="cabin-buy" type="button" data-model="essential" data-open-panel="payment">구매하기</button>
+    </div>
   </div>
 </section>
 </div>
