@@ -54,6 +54,24 @@ dialog{width:min(920px,calc(100% - 24px));max-height:calc(100dvh - 32px);padding
 .accessories-section h2{margin:0;font-size:clamp(32px,5vw,56px);letter-spacing:-.05em}
 .accessories-section p{margin:14px 0 0;color:#555}
 @media(max-width:400px){.nav .site-menu{gap:12px}.site-menu a{font-size:12px}.site-menu .logo{font-size:15px}}
+
+/* Extend each photograph into the sides of its banner. */
+.banner-metron{--edge-photo:url("assets/metron-5814.webp");--hover-edge-photo:url("assets/metron-5798.webp")}
+.banner-essential{--edge-photo:url("assets/una05142.webp")}
+.banner-metron .banner-art,.banner-essential .banner-art{top:0}
+.banner-metron .banner-art::before,.banner-essential .banner-art::before{
+  content:"";position:absolute;inset:-28px;
+  background:linear-gradient(#f5f5f5c9,#f5f5f52b),var(--edge-photo) center 70% / cover;
+  filter:blur(25px);
+}
+.banner-metron .banner-art img,.banner-essential .banner-art img{
+  inset:auto auto 0 50%;width:auto;max-width:100%;height:auto;max-height:calc(100% - 165px);
+  transform:translateX(-50%);
+  mask-image:linear-gradient(to right,transparent,#000 5%,#000 95%,transparent),linear-gradient(to bottom,transparent,#000 5%);
+  mask-composite:intersect;
+}
+@media(hover:hover){.banner-metron:hover .banner-art::before{background-image:linear-gradient(#f5f5f5c9,#f5f5f52b),var(--hover-edge-photo)}}
+@media(max-width:720px){.banner-metron .banner-art img,.banner-essential .banner-art img{max-height:calc(100% - 145px)}}
 </style>
 </head>
 <body id="home">
